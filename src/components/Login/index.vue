@@ -63,7 +63,7 @@ export default {
     min-height:100%;
     text-align:center;
     }
-    .loginWrapper {
+.loginWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;

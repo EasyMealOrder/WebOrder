@@ -7,24 +7,6 @@
                 </div>
                 <div>{{item.msg}}</div>
             </router-link>
-            <!-- <router-link :to="{name : 'Home'}" tag="li">
-                <div>
-                    <img src="../../assets/images/home.svg"/>
-                </div>
-                <div>首页</div>
-            </router-link>
-            <router-link :to="{name : 'Order'}" tag="li">
-                <div>
-                    <img src="../../assets/images/cart.svg"/>
-                </div>
-                <div>订单</div>
-            </router-link>
-            <router-link :to="{name : 'Myself'}" tag="li">
-                <div>
-                    <img src="../../assets/images/me.svg"/>
-                </div>
-                <div>我的</div>
-            </router-link> -->
         </ul>
     </div>
 </template>
