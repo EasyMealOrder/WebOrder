@@ -7,8 +7,9 @@
           <p class="desc">{{ dish.description }}</p>
           <div class="dish-bottom">
             <p class="price">¥ {{dish.price}}</p>
+            <el-button class="dish-sub" circle></el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
-            <el-button class="dish-button" type="primary" icon="el-icon-plus" circle></el-button>
+            <el-button class="dish-button" type="primary" circle></el-button>
           </div>
         </div>
       </div>
@@ -22,42 +23,61 @@ export default {
 </script>
 
 <style>
-.dish-item {
-  height: 170px;
+.dish-list {
+  height: 100%;
+}
+.dish-list .dish-item {
+  height: 23vw;
+  margin: 0 0 1% 0;
   background-color: #fff;
 }
 .dish-item img {
-  margin: 10px 8px 10px auto;
-  width: 150px;
-  height: 150px;
+  margin: 2% 1% 1.5% 1%;
+  width: 20vw;
+  height: 20vw;
   float: left;
 }
 .dish-item .dish-right {
-  height: 170px;
+  height: 100%;
 }
 .dish-item .dish-right .name {
-  padding: 10px 0 8px 0;
-  height: 14px;
-  line-height: 14px;
-  font-size: 14px;
+  padding: 2% 0 2% 0;
+  height: 20%;
+  line-height: 2.5vw;
+  font-size: 2.5vw;
+  margin: 0 0 0 0;
 }
 .dish-item .dish-right .desc {
-  line-height: 10px;
-  font-size: 10px;
+  line-height: 1.5vw;
+  font-size: 1.5vw;
   color: #93999f;
+  height: 10%;
+  padding: 0 0 2% 0;
+  margin: 0 0 0 0;
 }
 .dish-item .dish-right .dish-bottom {
-  height: 98px;
   position: relative;
+  height: 50%;
 }
 .dish-item .dish-right .dish-bottom .price{
-  font-weight: 700;
-  line-height: 24px;
-  padding: 50px 0 0 0;
+  font-weight: bold;
+  font-size: 3vw;
+  line-height: 3vw;
+  margin: 0;
 }
 .dish-item .dish-right .dish-bottom .dish-button {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 2vw;
+  bottom: 1vw;
+  margin: 0;
+  height: 4.5vw;
+  width: 4.5vw;
+}
+.dish-item .dish-right .dish-bottom .dish-sub {
+  position: absolute;
+  right: 15vw;
+  bottom: 1vw;
+  height: 4.5vw;
+  width: 4.5vw;
 }
 </style>

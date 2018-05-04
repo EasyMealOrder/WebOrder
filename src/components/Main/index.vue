@@ -43,20 +43,12 @@ export default {
 </script>
 
 <style>
-html,
-body {
+#main {
   height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: Helvetica, sans-serif;
-  background-color: #EFEFEF;
 }
 .content {
   height: 100%;
-  margin: 0 auto 60px auto;
+  margin: 0 0 60px 0;
 }
 .section {
   background: #fff;
