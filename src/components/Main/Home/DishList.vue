@@ -27,12 +27,12 @@ export default {
   height: 100%;
 }
 .dish-list .dish-item {
-  height: 23vw;
+  height: 25vw;
   margin: 0 0 1% 0;
   background-color: #fff;
 }
 .dish-item img {
-  margin: 2% 1% 1.5% 1%;
+  margin: 2.5vw 1% 1.5vw 1%;
   width: 20vw;
   height: 20vw;
   float: left;
@@ -41,7 +41,7 @@ export default {
   height: 100%;
 }
 .dish-item .dish-right .name {
-  padding: 2% 0 2% 0;
+  padding: 2.5% 0 2% 0;
   height: 20%;
   line-height: 2.5vw;
   font-size: 2.5vw;
@@ -68,16 +68,16 @@ export default {
 .dish-item .dish-right .dish-bottom .dish-button {
   position: absolute;
   right: 2vw;
-  bottom: 1vw;
+  bottom: 1.5vw;
   margin: 0;
-  height: 4.5vw;
-  width: 4.5vw;
+  height: 4vw;
+  width: 4vw;
 }
 .dish-item .dish-right .dish-bottom .dish-sub {
   position: absolute;
   right: 15vw;
-  bottom: 1vw;
-  height: 4.5vw;
-  width: 4.5vw;
+  bottom: 1.5vw;
+  height: 4vw;
+  width: 4vw;
 }
 </style>

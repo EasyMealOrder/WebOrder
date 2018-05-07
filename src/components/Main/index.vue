@@ -47,8 +47,10 @@ export default {
   height: 100%;
 }
 .content {
-  height: 100%;
-  margin: 0 0 60px 0;
+  height: 95%;
+  margin: 0;
+  position: relative;
+  top: 5%;
 }
 .section {
   background: #fff;

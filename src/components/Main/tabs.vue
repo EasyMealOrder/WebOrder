@@ -2,9 +2,6 @@
     <div class="tabs">
         <ul>
             <router-link v-for="item in items" :key="item.msg" :to="item.link" tag="li">
-                <div>
-                    <img :src="item.img">
-                </div>
                 <div>{{item.msg}}</div>
             </router-link>
         </ul>
@@ -19,13 +16,14 @@ export default {
 </script>
 
 <style>
-    .tabs {
+.tabs {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   background-color: #fff;
   box-shadow: 0 2px 4px #000;
   width: 100%;
+  height: 5%;
 }
 .tabs > ul,
 .tabs > ul > li {
