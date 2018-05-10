@@ -1,7 +1,11 @@
 <template>
   <div id="home">
     <el-container>
-      <el-aside width="15%">Aside</el-aside>
+      <el-aside width="20%">
+        <div class="aside-part">
+          <aside-list :items="items"></aside-list>
+        </div>
+      </el-aside>
       <el-main>
         <div class="dish-part">
           <dish-list :dishes="dishes"></dish-list>
@@ -13,8 +17,9 @@
 
 <script>
 import DishList from './DishList.vue'
+import AsideList from './Aside.vue'
 export default {
-  components: { DishList },
+  components: {DishList, AsideList},
   data () {
     return {
       dishes: [
@@ -33,10 +38,98 @@ export default {
           dish_img: '/static/images/drink.jpg',
           price: 82,
           id: 1
+        },
+        {
+          name: '82年雪碧',
+          description: '压压惊专用',
+          num: 1,
+          dish_img: '/static/images/drink.jpg',
+          price: 82,
+          id: 2
+        },
+        {
+          name: '82年雪碧',
+          description: '压压惊专用',
+          num: 1,
+          dish_img: '/static/images/drink.jpg',
+          price: 82,
+          id: 3
+        },
+        {
+          name: '82年雪碧',
+          description: '压压惊专用',
+          num: 1,
+          dish_img: '/static/images/drink.jpg',
+          price: 82,
+          id: 4
+        },
+        {
+          name: '82年雪碧',
+          description: '压压惊专用',
+          num: 1,
+          dish_img: '/static/images/drink.jpg',
+          price: 82,
+          id: 5
+        },
+        {
+          name: '82年雪碧',
+          description: '压压惊专用',
+          num: 1,
+          dish_img: '/static/images/drink.jpg',
+          price: 82,
+          id: 6
+        }
+      ],
+      items: [
+        {
+          name: '优惠',
+          description: '',
+          id: 0
+        },
+        {
+          name: '炒饭',
+          description: '',
+          id: 1
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 2
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 3
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 4
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 5
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 6
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 7
+        },
+        {
+          name: '饮料',
+          description: '',
+          id: 8
         }
       ]
     }
   }
+
 }
 </script>
 
@@ -53,6 +146,7 @@ export default {
 .el-main {
   line-height: 160px;
   height: 100%;
+  padding: 0;
 }
 body > .el-container {
   margin: 0;
@@ -61,6 +155,9 @@ body > .el-container {
   height: 100%;
 }
 .dish-part {
+  height: 100%;
+}
+.aside-part {
   height: 100%;
 }
 </style>
