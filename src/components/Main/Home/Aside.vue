@@ -18,14 +18,21 @@ export default {
 }
 .aside-item {
   margin: 0 0 0 0;
-  height: 15vw;
+  height: 10vw;
   width: 100%;
   float: left;
+
 }
 .aside-button {
   width: 100%;
   height: 100%;
   float: left;
   text-align:center;
+  color:#B56969;
+  background-color:#e9e9e9;
 }
+@media only screen and (max-width: 1600px) { .aside-button{ font-size: 35px; }}
+@media only screen and (max-width: 960px) { .aside-button{ font-size: 25px; }}
+@media only screen and (max-width: 400px) { .aside-button{ font-size: 15px; }}
+
 </style>

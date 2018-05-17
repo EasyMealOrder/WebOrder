@@ -20,8 +20,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
-  box-shadow: 0 2px 4px #000;
+  background-color: #e6cf8b;
   width: 100%;
   height: 5%;
 }
@@ -36,12 +35,17 @@ export default {
 }
 .tabs ul > li {
   text-align: center;
-  font-size: 10px;
   display: table-cell;
   padding: 8px 12px;
 }
+
+@media only screen and (max-width: 1200px) { .tabs ul > li{ font-size: 18px; }}
+@media only screen and (max-width: 640px) { .tabs ul > li{ font-size: 15px; }}
+@media only screen and (max-width: 320px) { .tabs ul > li{ font-size: 10px; }}
+
 .tabs ul > li.active {
   color: #D0021B;
+  background-color: #e9e9e9;
 }
 
 </style>

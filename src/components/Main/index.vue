@@ -16,19 +16,24 @@ export default {
     return {
       children: [
         {
+          msg: '我',
+          link: {name: 'Myself'},
+          img: '/static/images/me.svg'
+        },
+        {
           msg: '首页',
           link: {name: 'Home'},
           img: '/static/images/home.svg'
         },
         {
+          msg: '餐盘',
+          link: {name: 'Plate'},
+          img: '/static/images/plate.svg'
+        },
+        {
           msg: '订单',
           link: {name: 'Order'},
           img: '/static/images/cart.svg'
-        },
-        {
-          msg: '我的',
-          link: {name: 'Myself'},
-          img: '/static/images/me.svg'
         }
       ]
     }
