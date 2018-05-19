@@ -1,14 +1,19 @@
 <template>
 <div>
   <Plate></Plate>
-  <div class="payButton">提交订单</div>
+  <div class="payButton">去付款，共：￥{{totalPrice}}</div>
 </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Plate from './Plate.vue'
+
 export default{
-  components: {Plate}
+  components: {Plate},
+  computed: mapGetters({
+    totalPrice: 'cartTotalPrice'
+  })
 }
 
 </script>
