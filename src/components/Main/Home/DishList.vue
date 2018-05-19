@@ -9,7 +9,7 @@
             <p class="price">¥ {{dish.price}}</p>
             <el-button class="dish-sub" circle></el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
-            <el-button class="dish-button" type="primary" circle></el-button>
+            <el-button class="dish-button" type="primary" circle @click="addDishToCart(dish)"></el-button>
           </div>
         </div>
       </div>
@@ -17,8 +17,18 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  props: ['dishes']
+  computed: mapGetters({
+    dishes: 'allDishes'
+  }),
+  methods: mapActions([
+    'addDishToCart'
+  ]),
+  created () {
+    this.$store.dispatch('getAllDishes')
+  }
 }
 </script>
 
@@ -55,6 +65,7 @@ export default {
   padding: 0 0 2% 0;
   margin: 0 0 0 0;
 }
+
 .dish-item .dish-right .dish-bottom {
   position: relative;
   height: 50%;

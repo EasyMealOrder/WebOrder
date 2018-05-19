@@ -8,7 +8,8 @@
       </el-aside>
       <el-main>
         <div class="dish-part">
-          <dish-list :dishes="dishes"></dish-list>
+          <!-- <dish-list :dishes="dishes"></dish-list> -->
+          <dish-list ></dish-list>
         </div>
       </el-main>
     </el-container>
@@ -22,6 +23,7 @@ export default {
   components: {DishList, AsideList},
   data () {
     return {
+      /*
       dishes: [
         {
           name: '农家蛋炒饭',
@@ -32,7 +34,7 @@ export default {
           id: 0
         },
         {
-          name: '82年雪碧',
+          name: '82年雪碧1号',
           description: '压压惊专用',
           num: 1,
           dish_img: '/static/images/drink.jpg',
@@ -40,7 +42,7 @@ export default {
           id: 1
         },
         {
-          name: '82年雪碧',
+          name: '82年雪碧2号',
           description: '压压惊专用',
           num: 1,
           dish_img: '/static/images/drink.jpg',
@@ -48,7 +50,7 @@ export default {
           id: 2
         },
         {
-          name: '82年雪碧',
+          name: '82年雪碧3号',
           description: '压压惊专用',
           num: 1,
           dish_img: '/static/images/drink.jpg',
@@ -56,7 +58,7 @@ export default {
           id: 3
         },
         {
-          name: '82年雪碧',
+          name: '82年雪碧4号',
           description: '压压惊专用',
           num: 1,
           dish_img: '/static/images/drink.jpg',
@@ -64,7 +66,7 @@ export default {
           id: 4
         },
         {
-          name: '82年雪碧',
+          name: '82年雪碧5号',
           description: '压压惊专用',
           num: 1,
           dish_img: '/static/images/drink.jpg',
@@ -72,7 +74,7 @@ export default {
           id: 5
         },
         {
-          name: '82年雪碧',
+          name: '82年雪碧6号',
           description: '压压惊专用',
           num: 1,
           dish_img: '/static/images/drink.jpg',
@@ -80,6 +82,7 @@ export default {
           id: 6
         }
       ],
+      */
       items: [
         {
           name: '优惠',
