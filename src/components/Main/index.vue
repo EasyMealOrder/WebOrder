@@ -27,7 +27,7 @@ export default {
         },
         {
           msg: '餐盘',
-          link: {name: 'Plate'},
+          link: {name: 'PlateWrapper'},
           img: '/static/images/plate.svg'
         },
         {

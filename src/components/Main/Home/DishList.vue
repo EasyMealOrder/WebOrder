@@ -7,7 +7,7 @@
           <p class="desc">{{ dish.description }}</p>
           <div class="dish-bottom">
             <p class="price">¥ {{dish.price}}</p>
-            <el-button class="dish-sub" circle></el-button>
+            <el-button class="dish-sub" id="dish-sub-in-dish-list" circle></el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
             <el-button class="dish-button" type="primary" circle @click="addDishToCart(dish)"></el-button>
           </div>
@@ -90,5 +90,8 @@ export default {
   bottom: 1.5vw;
   height: 4vw;
   width: 4vw;
+}
+#dish-sub-in-dish-list{
+    visibility: hidden;
 }
 </style>

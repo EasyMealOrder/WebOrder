@@ -89,7 +89,7 @@ const mutations = {
       }
       return -1
     }
-    state.added.splice(indexOf(state.added, id))
+    state.added.splice(indexOf(state.added, id), 1)
   },
 
   incrementItemQuantity (state, { id }) {
