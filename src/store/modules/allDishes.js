@@ -3,22 +3,24 @@ import axios from 'axios'
 
 // initial state
 const state = {
-  all: []
+  all: [],
+  typeList: []
 }
 
 // getters
 const getters = {
-  allDishes: state => state.all
+  allDishes: state => state.all,
+  allTypes: state => state.typeList
 }
 
 const actions = {
   // 从服务器取回所有菜品
-  // 存入 all 数组
+  // 写入 all 数组, 写入typeList数组
   getAllDishes ({ commit }) {
     axios.get('https://private-anon-1fd8f2407a-easymealorder.apiary-mock.com/dishes')
       .then(res => {
-        console.log(typeof res['data'])
-        commit('setAllDishes', res['data'])
+        commit('setAllDishes', res['data']['allDish'])
+        commit('setTypeList', res['data']['dishTypeList'])
       })
       .catch(error => {
         console.log(error)
@@ -32,6 +34,12 @@ const mutations = {
   setAllDishes (state, dishes) {
     state.all = dishes
     console.log(state.all)
+  },
+
+  // 设置种类数组
+  setTypeList (state, l) {
+    state.typeList = l
+    console.log(state.typeList)
   }
 }
 

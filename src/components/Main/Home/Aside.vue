@@ -1,14 +1,18 @@
 <template>
   <div class="aside-list">
-    <div class="aside-item" v-for="item in items" :key="item.id">
+    <div class="aside-item" v-for="item in types" :key="item.tid">
       <el-button class="aside-button" type="primary">{{ item.name }}</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  props: ['items']
+  computed: mapGetters({
+    types: 'allTypes'
+  })
 }
 </script>
 
