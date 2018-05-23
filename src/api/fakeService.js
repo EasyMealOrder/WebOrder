@@ -1,6 +1,7 @@
 /**
  * Mocking client-server processing
  */
+
 const _dishes = [
   {
     name: '农家蛋炒饭',
