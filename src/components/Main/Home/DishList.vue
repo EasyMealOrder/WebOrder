@@ -21,7 +21,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: mapGetters({
-    dishes: 'allDishes'
+    dishes: 'shownDishes'
   }),
   methods: mapActions([
     'addDishToCart'

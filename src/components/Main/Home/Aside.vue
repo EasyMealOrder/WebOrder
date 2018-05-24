@@ -1,18 +1,21 @@
 <template>
   <div class="aside-list">
     <div class="aside-item" v-for="item in types" :key="item.tid">
-      <el-button class="aside-button" type="primary">{{ item.name }}</el-button>
+      <el-button class="aside-button" type="primary" @click="showDishesByType(item.name)">{{ item.name }}</el-button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: mapGetters({
     types: 'allTypes'
-  })
+  }),
+  methods: mapActions([
+    'showDishesByType'
+  ])
 }
 </script>
 
