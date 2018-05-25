@@ -1,5 +1,4 @@
-// import service from '../../api/fakeService'
-import axios from 'axios'
+import service from '../../api/unitedInterface'
 
 // initial state
 const state = {
@@ -19,15 +18,11 @@ const actions = {
   // 从服务器取回所有菜品
   // 写入 all 数组, 写入typeList数组
   getAllDishes (context) {
-    axios.get('https://private-anon-1fd8f2407a-easymealorder.apiary-mock.com/dishes')
-      .then(res => {
-        context.commit('setAllDishes', res['data']['allDish'])
-        context.commit('setTypeList', res['data']['dishTypeList'])
-        context.commit('setShownDishes', '全部')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    service.getDishesFromService(res => {
+      context.commit('setAllDishes', res['data']['allDish'])
+      context.commit('setTypeList', res['data']['dishTypeList'])
+      context.commit('setShownDishes', '全部')
+    })
   },
 
   // 按类显示菜单

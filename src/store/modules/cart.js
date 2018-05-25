@@ -1,4 +1,4 @@
-import service from '../../api/fakeService'
+import service from '../../api/unitedInterface'
 
 // initial state
 // shape: [{ id, quantity }]
