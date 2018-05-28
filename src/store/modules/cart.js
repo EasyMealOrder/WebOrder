@@ -34,18 +34,27 @@ const getters = {
 
 // actions
 const actions = {
-  checkout ({ commit, state }, dishes) {
+  checkout ({ commit, state }, {dishes, route}) {
+    console.log(dishes)
+    console.log('route', route)
+    console.log('this.route', this.$router)
     const savedCartItems = [...state.added]
     commit('setCheckoutStatus', null)
     // empty cart
     commit('setCartItems', { items: [] })
     service.buyDishes(
       dishes,
-      () => commit('setCheckoutStatus', 'successful'),
+      () => {
+        commit('setCheckoutStatus', 'successful')
+        // todo:跳转到成功页面
+        route.push('/payResult')
+      },
       () => {
         commit('setCheckoutStatus', 'failed')
         // rollback to the cart saved before sending the request
         commit('setCartItems', { items: savedCartItems })
+        // todo: 跳转到失败页面
+        route.push('/payResult')
       }
     )
   },
@@ -108,6 +117,7 @@ const mutations = {
 
   setCheckoutStatus (state, status) {
     state.checkoutStatus = status
+    console.log('checkout' + status)
   }
 }
 

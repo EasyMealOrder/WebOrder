@@ -1,19 +1,32 @@
 <template>
 <div>
   <Plate></Plate>
-  <div class="payButton">去付款，共：￥{{totalPrice}}</div>
+ <div class="payButton" @click="shell">去付款，共：￥{{totalPrice}}</div>
+
 </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Plate from './Plate.vue'
 
 export default{
   components: {Plate},
-  computed: mapGetters({
-    totalPrice: 'cartTotalPrice'
-  })
+  computed: {
+    ...mapGetters({
+      totalPrice: 'cartTotalPrice',
+      dishes: 'cartDishes'
+    }),
+    myRoute: this.$router
+  },
+  methods: {
+    ...mapActions({
+      checkout: 'checkout'
+    }),
+    shell () {
+      checkout({'dishes':dishes, 'route':myRoute})
+    }
+  }
 }
 
 </script>

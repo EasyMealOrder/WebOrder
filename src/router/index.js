@@ -7,6 +7,7 @@ import MainHome from '../components/Main/Home/Home.vue'
 import Order from '../components/Main/Order/Order.vue'
 import Myself from '../components/Main/Myself/Myself.vue'
 import PlateWrapper from '../components/Main/Plate/PlateWrapper.vue'
+import PayResult from '../components/payResult'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({mode: 'history',
         {path: 'myself', name: 'Myself', component: Myself},
         {path: 'plate', name: 'PlateWrapper', component: PlateWrapper}
       ]
+    },
+    {
+      path: '/payResult',
+      name: 'PayResult',
+      component: PayResult
     }
   ]
 })
