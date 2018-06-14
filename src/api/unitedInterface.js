@@ -30,5 +30,9 @@ export default {
       .catch(error => {
         console.log(error)
       })
+  },
+
+  finishADishInAOrder: function (orderId, dishId) {
+    // todo: 向后端更新状态
   }
 }

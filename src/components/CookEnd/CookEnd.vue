@@ -6,15 +6,26 @@
    </div>
      <div v-show="!isAllListDisplayed">
     <div  class="masonry">
-      <div  class="toDoOrderWrapperInCookEnd item" v-for="order in allOrderToDo" :key="order.orderId">
-        <div>{{order.deskId}}号桌</div>
-        <div>下单时间 {{order.orderTime}}</div>
-        <div> 订单号 {{order.orderId}}</div>
+      <div  class="toDoOrderWrapperInCookEnd item" v-for="order in allOrderToDo" :key="order.orderId" d>
+        <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
+        <div class="orderMetaData"> 订单号 {{order.orderId}}</div>
+        <hr/>
+
         <div class="wrapperOfDishesInToDoOrder" v-for="dish in order.dishList" :key="dish.dishId">
-          {{dish.dishName}} *  {{dish.num}} <button v-show="!dish.isDishCompleted">完成</button>
+          <div id="dishWrapper">
+           <div id="dishNameItem">{{dish.dishName}}</div>
+           <div id="dishAmountItem">{{dish.num}}份</div>
+           <div id="dishCompletedItem">
+            <button v-show="!dish.isDishCompleted" @click="finishADishInAOrder(order.orderId, dish.dishId)">完成</button>
+            <div v-show="dish.isDishCompleted">已完成</div>
+           </div>
+          </div>
         </div>
+
+        <hr/>
+
         <div>备注: {{order.note}} </div>
-        <button v-show="!order.isOrderCompleted">全部完成</button>
+        <button v-show="!order.isOrderCompleted" id="allCompletedButton">全部完成</button>
         </div>
        </div>
     </div>
@@ -30,7 +41,7 @@ export default {
     return {
       isAllListDisplayed: false,
       buttonText: '全部订单',
-      allOrderToDo: {}
+      allOrderToDo: []
     }
   },
   methods: {
@@ -41,6 +52,14 @@ export default {
         this.buttonText = '未做订单'
       }
       this.isAllListDisplayed = !this.isAllListDisplayed
+    },
+
+    finishADishInAOrder: function (orderId, dishId) {
+      var idx = this.allOrderToDo.findIndex(order => order.orderId === orderId)
+      var jdx = this.allOrderToDo[idx].dishList.findIndex(dish => dish.dishId === dishId)
+      // 必须通过$set，否则无法触发视图更新
+      this.$set(this.allOrderToDo[idx].dishList[jdx], 'isDishCompleted', true)
+      service.finishADishInAOrder(orderId, dishId)
     }
   },
 
@@ -77,7 +96,7 @@ export default {
   width: 90%;
 }
 
- .item {
+.item {
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: auto;
@@ -86,4 +105,39 @@ export default {
   margin: 0 8px 8px 0; /* Some gutter */
 }
 
+.orderMetaData {
+  font-size: 14px;
+}
+
+#dishWrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#dishNameItem,#dishCompletedItem, #dishCompletedItem {
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  height: auto;
+}
+
+#dishNameItem {
+  flex-shrink: 4;
+  flex-grow: 4;
+}
+
+#dishAmountItem {
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+#dishCompletedItem {
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+#allCompletedButton{
+  width: 100%;
+  margin-bottom: 5px;
+}
 </style>
