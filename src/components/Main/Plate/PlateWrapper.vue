@@ -1,7 +1,7 @@
 <template>
 <div>
   <Plate></Plate>
- <div class="payButton" @click="shell">去付款，共：￥{{totalPrice}}</div>
+ <div class="payButton">去付款，共：￥{{totalPrice}}</div>
 
 </div>
 </template>
@@ -22,10 +22,7 @@ export default{
   methods: {
     ...mapActions({
       checkout: 'checkout'
-    }),
-    shell () {
-      checkout({'dishes':dishes, 'route':myRoute})
-    }
+    })
   }
 }
 

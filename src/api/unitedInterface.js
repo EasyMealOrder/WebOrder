@@ -21,5 +21,14 @@ export default {
         ? cb()
         : errorCb()
     }, 100)
+  },
+
+  getAllToDoOrder (cb) {
+    console.log('getAllToDoOrder called')
+    axios.get('https://private-anon-1fd8f2407a-easymealorder.apiary-mock.com/menus')
+      .then(cb)
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
