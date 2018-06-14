@@ -16,8 +16,8 @@
            <div id="dishNameItem">{{dish.dishName}}</div>
            <div id="dishAmountItem">{{dish.num}}份</div>
            <div id="dishCompletedItem">
-            <button v-show="!dish.isDishCompleted" @click="finishADishInAOrder(order.orderId, dish.dishId)">完成</button>
-            <div v-show="dish.isDishCompleted">已完成</div>
+            <button id="finishADishInAOrderButton" v-show="!dish.isDishCompleted" @click="finishADishInAOrder(order.orderId, dish.dishId)">完成</button>
+            <div id="ADishInAOrderIsFinishedText" v-show="dish.isDishCompleted">已完成</div>
            </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
         <hr/>
 
         <div>备注: {{order.note}} </div>
-        <button v-show="!order.isOrderCompleted" id="allCompletedButton">全部完成</button>
+        <button v-show="!order.isOrderCompleted" id="allCompletedButton" @click="finishAOrder(order.orderId)">全部完成</button>
         </div>
        </div>
     </div>
@@ -54,12 +54,38 @@ export default {
       this.isAllListDisplayed = !this.isAllListDisplayed
     },
 
+    showMessage: function (msg) {
+      console.log(msg)
+    },
+
     finishADishInAOrder: function (orderId, dishId) {
       var idx = this.allOrderToDo.findIndex(order => order.orderId === orderId)
       var jdx = this.allOrderToDo[idx].dishList.findIndex(dish => dish.dishId === dishId)
       // 必须通过$set，否则无法触发视图更新
-      this.$set(this.allOrderToDo[idx].dishList[jdx], 'isDishCompleted', true)
-      service.finishADishInAOrder(orderId, dishId)
+      service.finishADishInAOrder(orderId, dishId, () => {
+        this.$set(this.allOrderToDo[idx].dishList[jdx], 'isDishCompleted', true)
+      }, () => {
+        // todo:显示错误信息
+        this.showMessage('网络错误')
+      })
+    },
+
+    finishAOrder: function (orderId) {
+      var idx = this.allOrderToDo.findIndex(order => order.orderId === orderId)
+      var jdx = this.allOrderToDo[idx].dishList.findIndex(dish => dish.isDishCompleted === false)
+      // jdx === -1, 说明所有dish都做好了
+      if (jdx === -1) {
+        service.finishAOrder(orderId, () => {
+          this.$set(this.allOrderToDo[idx], 'isOrderCompleted', true)
+          this.$delete(this.allOrderToDo, idx)
+          console.log(this.allOrderToDo)
+        }, () => {
+          // todo:显示错误信息
+          this.showMessage('网络错误')
+        })
+      } else {
+        this.showMessage('还有没完成的菜')
+      }
     }
   },
 
@@ -82,6 +108,7 @@ export default {
     border-style: solid;
     padding-left: 5px;
     padding-right: 5px;
+    padding-top: 5px;
   }
 
   html {
@@ -107,6 +134,7 @@ export default {
 
 .orderMetaData {
   font-size: 14px;
+  background-color: #e6cf8b;
 }
 
 #dishWrapper {
@@ -136,8 +164,17 @@ export default {
   flex-grow: 1;
 }
 
-#allCompletedButton{
+#allCompletedButton {
   width: 100%;
   margin-bottom: 5px;
+  background-color: #b56969;
+}
+
+#finishADishInAOrderButton {
+  background-color: #b56969;
+}
+
+#ADishInAOrderIsFinishedText {
+  color: #b56969;
 }
 </style>

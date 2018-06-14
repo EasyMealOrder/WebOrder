@@ -32,7 +32,17 @@ export default {
       })
   },
 
-  finishADishInAOrder: function (orderId, dishId) {
+  finishADishInAOrder: function (orderId, dishId, cb, errorCb) {
     // todo: 向后端更新状态
+    // 成功则cb
+    cb()
+    // 失败则errorCb
+  },
+
+  finishAOrder: function (orderIdk, cb, errorCb) {
+    // todo：像后端更新状态
+    // 成功则cb
+    cb()
+    // 失败则errorCb
   }
 }
