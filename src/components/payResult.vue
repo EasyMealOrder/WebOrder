@@ -12,7 +12,7 @@ export default {
   name: 'payResultPage',
   methods: {
     backToPlate () {
-      this.$route.go(-1)
+      this.$router.go(-1)
     }
   }
 }

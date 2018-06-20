@@ -1,7 +1,7 @@
 <template>
 <div>
   <Plate></Plate>
- <div class="payButton">去付款，共：￥{{totalPrice}}</div>
+ <el-button class="payButton" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
 
 </div>
 </template>
@@ -21,7 +21,15 @@ export default{
   methods: {
     ...mapActions({
       checkout: 'checkout'
-    })
+    }),
+    payMeal () {
+      console.log(this.$router)
+      let para = {
+        dishes: this.dishes,
+        route: this.$router
+      }
+      this.checkout(para)
+    }
   }
 }
 

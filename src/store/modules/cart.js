@@ -35,9 +35,9 @@ const getters = {
 // actions
 const actions = {
   checkout ({ commit, state }, {dishes, route}) {
+    console.log('12312312321232123')
     console.log(dishes)
     console.log('route', route)
-    console.log('this.route', this.$router)
     const savedCartItems = [...state.added]
     commit('setCheckoutStatus', null)
     // empty cart
@@ -46,6 +46,7 @@ const actions = {
       dishes,
       () => {
         commit('setCheckoutStatus', 'successful')
+        console.log('------------success')
         // todo:跳转到成功页面
         route.push('/payResult')
       },
@@ -53,6 +54,7 @@ const actions = {
         commit('setCheckoutStatus', 'failed')
         // rollback to the cart saved before sending the request
         commit('setCartItems', { items: savedCartItems })
+        console.log('------------fail')
         // todo: 跳转到失败页面
         route.push('/payResult')
       }
