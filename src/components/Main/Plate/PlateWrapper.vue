@@ -16,8 +16,7 @@ export default{
     ...mapGetters({
       totalPrice: 'cartTotalPrice',
       dishes: 'cartDishes'
-    }),
-    myRoute: this.$router
+    })
   },
   methods: {
     ...mapActions({
