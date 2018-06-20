@@ -26,7 +26,7 @@ export default new Router({mode: 'history',
       name: 'Main',
       component: Main,
       children: [
-        {path: 'home', name: 'Home', component: MainHome},
+        {path: 'home/:id', name: 'Home', component: MainHome},
         {path: 'order', name: 'Order', component: Order},
         {path: 'myself', name: 'Myself', component: Myself},
         {path: 'plate', name: 'PlateWrapper', component: PlateWrapper}

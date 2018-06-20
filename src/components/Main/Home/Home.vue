@@ -23,6 +23,7 @@ export default {
   components: {DishList, AsideList},
   data () {
     return {
+      desk: this.$route.params.id,
       items: [
         {
           name: '优惠',
