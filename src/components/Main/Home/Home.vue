@@ -20,59 +20,7 @@
 import DishList from './DishList.vue'
 import AsideList from './Aside.vue'
 export default {
-  components: {DishList, AsideList},
-  data () {
-    return {
-      items: [
-        {
-          name: '优惠',
-          description: '',
-          id: 0
-        },
-        {
-          name: '炒饭',
-          description: '',
-          id: 1
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 2
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 3
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 4
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 5
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 6
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 7
-        },
-        {
-          name: '饮料',
-          description: '',
-          id: 8
-        }
-      ]
-    }
-  }
-
+  components: {DishList, AsideList}
 }
 </script>
 
