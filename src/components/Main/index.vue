@@ -16,11 +16,6 @@ export default {
     return {
       children: [
         {
-          msg: '我',
-          link: {name: 'Myself'},
-          img: '/static/images/me.svg'
-        },
-        {
           msg: '首页',
           link: {name: 'Home'},
           img: '/static/images/home.svg'

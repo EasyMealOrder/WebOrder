@@ -1,5 +1,8 @@
 <template>
   <div id='orderPage'>
+    <div class="myhead">
+      <img src="/static/images/timg.jpeg" height="100%">
+    </div>
     <div  class="masonry">
       <div  class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId" d>
         <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
@@ -47,14 +50,26 @@ export default {
 
 <style>
 
-  .allOrderListInConsumerEnd {
+.myhead {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 5vw;
+  margin-left: 5vw; /* Adjustment for the gutter */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+.allOrderListInConsumerEnd {
     border-color: black;
     border-width: 1px;
     border-style: solid;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
-  }
+}
 
   html {
   box-sizing: border-box;

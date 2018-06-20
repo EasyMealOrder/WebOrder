@@ -4,6 +4,7 @@ import service from '../../api/unitedInterface'
 const state = {
   all: [],
   shownDishes: [],
+  // 侧边栏菜品类型
   typeList: []
 }
 
