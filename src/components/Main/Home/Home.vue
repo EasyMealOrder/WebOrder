@@ -58,7 +58,7 @@ export default {
 body > .el-container {
   margin: 0;
 }
-.el-container {
+#home {
   height: 95%;
   bottom: 0;
   position: fixed;
