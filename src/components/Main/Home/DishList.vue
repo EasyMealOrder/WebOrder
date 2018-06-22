@@ -100,7 +100,7 @@ export default {
 }
 .dish-item .dish-right .dish-bottom .dish-button {
   position: absolute;
-  right: 22vw;
+  right: 2vw;
   bottom: 1.5vw;
   margin: 0;
   height: 4vw;
@@ -108,7 +108,7 @@ export default {
 }
 .dish-item .dish-right .dish-bottom .dish-sub {
   position: absolute;
-  right: 40vw;
+  right: 20vw;
   bottom: 1.5vw;
   height: 4vw;
   width: 4vw;
