@@ -1,11 +1,11 @@
 <template>
-    <div class="tabs">
-        <ul>
-            <router-link v-for="item in items" :key="item.msg" :to="item.link" tag="li">
-                <div>{{item.msg}}</div>
+    <el-header class="tabs">
+        <el-row>
+            <router-link v-for="item in items" :key="item.msg" :to="item.link">
+                <el-col><i :class="item.icon">{{item.msg}}</i></el-col>
             </router-link>
-        </ul>
-    </div>
+        </el-row>
+    </el-header>
 </template>
 
 <script>
@@ -16,13 +16,41 @@ export default {
 </script>
 
 <style>
+.el-header {
+  padding: 0;
+  top: 0;
+  left: 0;
+  background-color: #84bce9;
+  width: 100%;
+}
+.el-row {
+  margin-bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.el-col {
+  color: rgb(11, 115, 212);
+  text-align: center;
+  border-radius: 4px;
+  width: 33.3%;
+  height: 100%;
+  padding-top: 7px;
+}
+.el-button {
+  font-family: Helvetica;
+  width: 100%;
+  height: 100%;
+}
+div {
+  font-family: Helvetica;
+}
 .tabs {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #e6cf8b;
+  background-color: #84bce9;
   width: 100%;
-  height: 5%;
+  height: 5% ! important;
 }
 .tabs > ul,
 .tabs > ul > li {
@@ -44,8 +72,8 @@ export default {
 @media only screen and (max-width: 320px) { .tabs ul > li{ font-size: 10px; }}
 
 .tabs ul > li.active {
-  color: #D0021B;
-  background-color: #e9e9e9;
+  color: rgb(11, 115, 212);
+  background-color: #b5cce2;
 }
 
 </style>

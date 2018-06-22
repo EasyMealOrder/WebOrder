@@ -1,6 +1,9 @@
 <template>
-  <div id='orderPage'>
-    <div  class="masonry">
+  <el-container id='orderPage'>
+    <el-container class="myhead">
+      <img src="/static/images/timg.jpeg" height="100%">
+    </el-container>
+    <el-container  class="masonry">
       <div  class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId" d>
         <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
         <div class="orderMetaData"> 订单号 {{order.orderId}}</div>
@@ -21,8 +24,8 @@
 
         <div>备注: {{order.note}} </div>
         </div>
-       </div>
-  </div>
+    </el-container>
+  </el-container>
 </template>
 <script>
 import service from '../../../api/unitedInterface'
@@ -46,15 +49,31 @@ export default {
 </script>
 
 <style>
+#orderPage {
+  width: 100%;
+  top: 5%;
+  height: 95%;
+}
 
-  .allOrderListInConsumerEnd {
+.myhead {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 10%; /* Adjustment for the gutter */
+  margin-bottom: 5%;
+  margin-top: 5%;
+  top: 6%;
+}
+
+.allOrderListInConsumerEnd {
     border-color: black;
     border-width: 1px;
     border-style: solid;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
-  }
+}
 
   html {
   box-sizing: border-box;
@@ -65,7 +84,8 @@ export default {
   flex-flow: row wrap;
   margin-right: 5vw;
   margin-left: 5vw; /* Adjustment for the gutter */
-  width: 90%;
+  width: 80%;
+  top: 36%
 }
 
 .item {

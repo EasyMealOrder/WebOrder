@@ -1,19 +1,19 @@
 <template>
-  <div class="dish-list">
+  <el-main class="dish-list">
       <div class="dish-item" v-for="dish in dishes" :key="dish.id">
         <img :src="dish.dish_img" />
         <div class="dish-right">
           <p class="name">{{ dish.name }}</p>
           <p class="desc">{{ dish.description }}</p>
           <div class="dish-bottom">
-            <p class="price">¥ {{dish.price}}</p>
-            <el-button class="dish-sub" circle @click="minusDishFromCart(dish)"></el-button>
-            <div class="dish-count">* {{dish.quantity }}</div>
-            <el-button class="dish-button" type="primary" @click="addDishToCart(dish)" circle></el-button>
+            <p class="price">¥ {{ dish.price }}</p>
+            <el-button class="dish-sub" icon="el-icon-minus" circle @click="minusDishFromCart(dish)"></el-button>
+            <p class="dish-count">{{ dish.quantity }}</p>
+            <el-button class="dish-button" type="primary" icon="el-icon-plus" @click="addDishToCart(dish)" circle></el-button>
           </div>
         </div>
       </div>
-  </div>
+  </el-main>
 </template>
 
 <script>
@@ -32,7 +32,9 @@ export default {
 
 <style>
 .dish-list {
-  height: 100%;
+  height: 95%;
+  top: 5%;
+  position: fixed;
 }
 .dish-list .dish-item {
   height: 25vw;
@@ -68,7 +70,7 @@ export default {
   position: relative;
   height: 50%;
 }
-.dish-item .dish-right .dish-bottom .price{
+.dish-item .dish-right .dish-bottom .price {
   font-weight: bold;
   font-size: 3vw;
   line-height: 3vw;
@@ -88,5 +90,16 @@ export default {
   bottom: 1.5vw;
   height: 4vw;
   width: 4vw;
+}
+.dish-sub {
+  background-color: #909399;
+}
+.dish-count {
+  position: absolute;
+  height: 4vw;
+  width: 4vw;
+  right: 9vw;
+  bottom: 1.5vw;
+  margin: 0;
 }
 </style>

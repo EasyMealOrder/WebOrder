@@ -1,8 +1,8 @@
 <template>
   <div id="pay-result-wrapper">
     <img id="pay-result-img" src="http://edu.asean168.com/uploadfile/2015/0630/20150630024710512.jpg">
-    <p>五秒后自动跳转</p>
-    <button id="return-btn-in-pay-result-page" @click="backToPlate"> 马上返回</button>
+    <p>5秒后自动跳转</p>
+    <el-button type="success" id="return-btn-in-pay-result-page" @click="backToPlate"> 马上返回</el-button>
   </div>
 </template>
 

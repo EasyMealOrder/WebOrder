@@ -1,5 +1,6 @@
 <template>
-  <div class="dish-list">
+  <el-container class="dish-list">
+    <el-main>
       <div class="dish-item" v-for="dish in dishes" :key="dish.id">
         <img :src="dish.dish_img" />
         <div class="dish-right">
@@ -7,13 +8,14 @@
           <p class="desc">{{ dish.description }}</p>
           <div class="dish-bottom">
             <p class="price">¥ {{dish.price}}</p>
-            <el-button class="dish-sub" id="dish-sub-in-dish-list" circle></el-button>
+            <el-button class="dish-sub" id="dish-sub-in-dish-list" icon="el-icon-minus" circle></el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
-            <el-button class="dish-button" type="primary" circle @click="addDishToCart(dish)"></el-button>
+            <el-button class="dish-button" type="primary" id="add" icon="el-icon-plus" circle @click="addDishToCart(dish)"></el-button>
           </div>
         </div>
       </div>
-  </div>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
@@ -28,11 +30,32 @@ export default {
   ]),
   created () {
     this.$store.dispatch('getAllDishes')
+    console.log('getAllDishes')
   }
 }
 </script>
 
 <style>
+.el-icon-circle-plus-outline {
+  height: 100%;
+}
+.dish-list {
+  height: 100%;
+  width: 100%;
+  top: 5%;
+}
+.dish-item {
+  height: 5%;
+  width: 100%;
+
+}
+.dish-button .dish-sub {
+  font-size: 30px;
+  text-align:center;
+  vertical-align:middle;
+  height:21px;
+}
+
 .dish-list {
   height: 100%;
 }
@@ -91,7 +114,15 @@ export default {
   height: 4vw;
   width: 4vw;
 }
-#dish-sub-in-dish-list{
-    visibility: hidden;
+#dish-sub-in-dish-list {
+  visibility: hidden;
+  position: absolute;
+  left: 67%;
+  background-color: #909399;
+}
+#add {
+  position: absolute;
+  right: 22vw;
+  bottom: 4vw;
 }
 </style>

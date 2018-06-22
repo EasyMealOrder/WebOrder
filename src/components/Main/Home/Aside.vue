@@ -35,8 +35,8 @@ export default {
   height: 100%;
   float: left;
   text-align:center;
-  color:#B56969;
-  background-color:#e9e9e9;
+  color:rgb(11, 115, 212);
+  background-color:#b5cce2;
 }
 @media only screen and (max-width: 1600px) { .aside-button{ font-size: 35px; }}
 @media only screen and (max-width: 960px) { .aside-button{ font-size: 25px; }}

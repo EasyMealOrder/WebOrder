@@ -1,7 +1,7 @@
 <template>
 <div>
   <Plate></Plate>
- <el-button class="payButton" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
+ <el-button class="payButton" icon="el-icon-success" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
 
 </div>
 </template>
