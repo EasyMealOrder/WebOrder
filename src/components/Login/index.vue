@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     clickSubmit () {
-      this.$router.push('/main/home')
+      this.$router.push('/main/home/1')
     }
   }
 }

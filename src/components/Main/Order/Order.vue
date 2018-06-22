@@ -1,10 +1,11 @@
 <template>
   <el-container id='orderPage'>
     <el-container class="myhead">
-      <img src="/static/images/timg.jpeg" height="100%">
+      <img id="orderHead" src="/static/images/timg.jpeg" height="100%">
     </el-container>
-    <el-container  class="masonry">
-      <div  class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId" d>
+    <el-container class="mybody">
+    <el-main class="masonry">
+      <div class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId">
         <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
         <div class="orderMetaData"> 订单号 {{order.orderId}}</div>
         <hr/>
@@ -22,8 +23,9 @@
 
         <hr/>
 
-        <div>备注: {{order.note}} </div>
-        </div>
+        <div class="note">备注: {{order.note}} </div>
+      </div>
+    </el-main>
     </el-container>
   </el-container>
 </template>
@@ -50,20 +52,35 @@ export default {
 
 <style>
 #orderPage {
+  position: fixed;
   width: 100%;
   top: 5%;
   height: 95%;
 }
 
 .myhead {
+  position: fixed;
   height: 20%;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  margin-left: 10%; /* Adjustment for the gutter */
-  margin-bottom: 5%;
-  margin-top: 5%;
-  top: 6%;
+  margin: 0;
+  top: 5%;
+}
+
+.mybody {
+  position: fixed;
+  height: 75%;
+  width: 100%;
+  top: 25%;
+}
+
+#orderHead {
+  position: absolute;
+  height: 80%;
+  width: auto;
+  margin-top: 3%;
+  margin-left: 5%;
 }
 
 .allOrderListInConsumerEnd {
@@ -82,9 +99,9 @@ export default {
 .masonry {
   display: flex;
   flex-flow: row wrap;
-  margin-right: 5vw;
-  margin-left: 5vw; /* Adjustment for the gutter */
-  width: 80%;
+  margin-right: 0;
+  margin-left: 0; /* Adjustment for the gutter */
+  width: 100%;
   top: 36%
 }
 
@@ -92,12 +109,16 @@ export default {
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: auto;
-  height: auto;
-  min-width: 360px;
-  margin: 0 8px 8px 0; /* Some gutter */
+  height: 50%;
+  width: 80%;
+  margin-top: 2%;
+  margin-right: auto;
+  margin-left: auto; /* Some gutter */
 }
 
 .orderMetaData {
+  height: 8vw;
+  line-height: 8vw;
   font-size: 14px;
   background-color: #e6cf8b;
 }
@@ -105,6 +126,8 @@ export default {
 #dishWrapper {
   display: flex;
   flex-flow: row wrap;
+  height: 8vw;
+  line-height: 8vw;
 }
 
 #dishNameItem,#dishCompletedItem, #dishCompletedItem {
@@ -145,5 +168,11 @@ export default {
 
 #ADishInAOrderIsNotFinishedText{
   color: #b56969;
+}
+
+.note {
+  height: 10vw;
+  line-height: 10vw;
+  font-size: 14px;
 }
 </style>
