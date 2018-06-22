@@ -1,7 +1,7 @@
 <template>
   <div class="aside-list">
     <div class="aside-item" v-for="item in types" :key="item.tid">
-      <el-button class="aside-button" type="primary" @click="showDishesByType(item.name)">{{ item.name }}</el-button>
+      <el-button class="aside-button" type="primary" @click="showDishesByType(item.dtype)">{{ item.dtype }}</el-button>
     </div>
   </div>
 </template>

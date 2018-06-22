@@ -4,8 +4,11 @@
 
 import axios from 'axios'
 
+const apihost = 'http://193.112.24.51:8000'
+
 export default {
   // 厨师用
+  apihost,
   getAllToDoOrder (cb) {
     console.log('getAllToDoOrder called')
     axios.get('https://private-anon-1fd8f2407a-easymealorder.apiary-mock.com/menus')
@@ -34,7 +37,7 @@ export default {
   // 消费者用
   getDishesFromService (cb) {
     console.log('getDishesFromService called')
-    axios.get('https://private-anon-1fd8f2407a-easymealorder.apiary-mock.com/dishes')
+    axios.get('/api/dish/')
       .then(cb)
       .catch(error => {
         console.log(error)

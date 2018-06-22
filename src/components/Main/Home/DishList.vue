@@ -30,8 +30,10 @@ export default {
     'addDishToCart'
   ]),
   created () {
-    this.$store.dispatch('getAllDishes')
-    console.log('getAllDishes')
+    if (this.$store.getters.allDishes === undefined || this.$store.getters.allDishes.length === 0) {
+      this.$store.dispatch('getAllDishes')
+      console.log('getAllDishes')
+    }
   }
 }
 </script>
