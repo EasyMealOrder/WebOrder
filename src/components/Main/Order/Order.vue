@@ -1,7 +1,7 @@
 <template>
   <el-container id='orderPage'>
     <el-container class="myhead">
-      <img src="/static/images/timg.jpeg" height="100%">
+      <img id="orderHead" src="/static/images/timg.jpeg" height="100%">
     </el-container>
     <el-container class="mybody">
     <el-main class="masonry">
@@ -75,7 +75,7 @@ export default {
   top: 25%;
 }
 
-img {
+#orderHead {
   position: absolute;
   height: 80%;
   width: auto;
