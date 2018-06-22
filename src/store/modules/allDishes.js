@@ -19,11 +19,14 @@ const actions = {
   // 从服务器取回所有菜品
   // 写入 all 数组, 写入typeList数组
   getAllDishes (context) {
+    /*
     service.getDishesFromService(res => {
       context.commit('setAllDishes', res['data']['allDish'])
       context.commit('setTypeList', res['data']['dishTypeList'])
       context.commit('setShownDishes', '全部')
     })
+    */
+    service.getDishTypesFromService(res => console.log(res))
   },
 
   // 按类显示菜单

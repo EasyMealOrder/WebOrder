@@ -42,6 +42,17 @@ export default {
   },
 
   // 消费者用
+  getDishTypesFromService (cb) {
+    console.log('getDishTypesFromService called')
+
+    axios.get('/api/category/')
+      .then(cb)
+      .catch(error => {
+        console.log(error)
+      })
+  },
+
+  // 消费者用
   buyDishes (products, cb, errorCb) {
     setTimeout(() => {
       // simulate random checkout failure.
