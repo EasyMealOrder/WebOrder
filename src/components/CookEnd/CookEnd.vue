@@ -7,17 +7,17 @@
      <div v-show="!isAllListDisplayed">
     <div  class="masonry">
       <div  class="toDoOrderWrapperInCookEnd item" v-for="order in allOrderToDo" :key="order.orderId" d>
-        <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
-        <div class="orderMetaData"> 订单号 {{order.orderId}}</div>
+        <div class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</div>
+        <div class="orderMetaData"> 订单号 {{order.id}}</div>
         <hr/>
 
         <div class="wrapperOfDishesInToDoOrder" v-for="dish in order.dishList" :key="dish.dishId">
           <div id="dishWrapper">
-           <div id="dishNameItem">{{dish.dishName}}</div>
-           <div id="dishAmountItem">{{dish.num}}份</div>
+           <div id="dishNameItem">{{dish.name}}</div>
+           <div id="dishAmountItem">{{dish.number}}份</div>
            <div id="dishCompletedItem">
-            <button id="finishADishInAOrderButton" v-show="!dish.isDishCompleted" @click="finishADishInAOrder(order.orderId, dish.dishId)">完成</button>
-            <div id="ADishInAOrderIsFinishedText" v-show="dish.isDishCompleted">已完成</div>
+            <button id="finishADishInAOrderButton" v-show="!dish.finished" @click="finishADishInAOrder(order.id, dish.dishId)">完成</button>
+            <div id="ADishInAOrderIsFinishedText" v-show="dish.finished">已完成</div>
            </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
         <hr/>
 
         <div>备注: {{order.note}} </div>
-        <button v-show="!order.isOrderCompleted" id="allCompletedButton" @click="finishAOrder(order.orderId)">全部完成</button>
+        <button v-show="!order.finished" id="allCompletedButton" @click="finishAOrder(order.id)">全部完成</button>
         </div>
        </div>
     </div>
@@ -34,6 +34,7 @@
 
 <script>
 import service from '../../api/unitedInterface'
+import axios from 'axios'
 
 export default {
   name: 'cookEndPage',
@@ -59,11 +60,11 @@ export default {
     },
 
     finishADishInAOrder: function (orderId, dishId) {
-      var idx = this.allOrderToDo.findIndex(order => order.orderId === orderId)
+      var idx = this.allOrderToDo.findIndex(order => order.id === orderId)
       var jdx = this.allOrderToDo[idx].dishList.findIndex(dish => dish.dishId === dishId)
       // 必须通过$set，否则无法触发视图更新
       service.finishADishInAOrder(orderId, dishId, () => {
-        this.$set(this.allOrderToDo[idx].dishList[jdx], 'isDishCompleted', true)
+        this.$set(this.allOrderToDo[idx].dishList[jdx], 'finished', true)
       }, () => {
         // todo:显示错误信息
         this.showMessage('网络错误')
@@ -71,14 +72,14 @@ export default {
     },
 
     finishAOrder: function (orderId) {
-      var idx = this.allOrderToDo.findIndex(order => order.orderId === orderId)
-      var jdx = this.allOrderToDo[idx].dishList.findIndex(dish => dish.isDishCompleted === false)
+      var idx = this.allOrderToDo.findIndex(order => order.id === orderId)
+      var jdx = this.allOrderToDo[idx].dishList.findIndex(dish => dish.finished === false)
       // jdx === -1, 说明所有dish都做好了
       if (jdx === -1) {
         service.finishAOrder(orderId, () => {
-          this.$set(this.allOrderToDo[idx], 'isOrderCompleted', true)
+          this.$set(this.allOrderToDo[idx], 'finished', true)
           this.$delete(this.allOrderToDo, idx)
-          console.log(this.allOrderToDo)
+          // console.log(this.allOrderToDo)
         }, () => {
           // todo:显示错误信息
           this.showMessage('网络错误')
@@ -96,7 +97,16 @@ export default {
     service.getAllToDoOrder(
       (textGet) => {
         this.allOrderToDo = textGet['data']
-        console.log(textGet)
+        // 每个订单获取菜品
+        this.allOrderToDo.forEach(order => {
+          axios.get('/api/dishrecord/' + order.id + '/')
+            .then(res => {
+              let idx = this.allOrderToDo.findIndex(odr => odr.id === order.id)
+              this.$set(this.allOrderToDo[idx], 'dishList', res['data'])
+              console.log(this.allOrderToDo[idx].dishList)
+            })
+            .catch(err => console.log(err))
+        })
       }
     )
   }

@@ -48,15 +48,14 @@ export default {
       axios.post(loginUrL, params)
         .then(response => {
           console.log(response)
-          this.$router.push('/cookEnd')
+          if (response.data.success === true) {
+            this.$router.push('/cookEnd')
+            this.$store.commit('generateUserID')
+          }
         })
         .catch(error => {
           console.log(error)
         })
-
-      console.log('login in')
-      this.$store.commit('generateUserID')
-      // this.$router.push('/main/home/1')
     }
   }
 }

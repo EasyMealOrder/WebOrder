@@ -13,15 +13,8 @@ export default {
   // 厨师用
   getAllToDoOrder (cb) {
     console.log('getAllToDoOrder called')
-    /*
-    axios.get('/api/order/unfinished/')
-      .then(cb)
-      .catch(error => {
-        console.log(error)
-      })
-    */
 
-    axios.get('http://private-anon-d45f2c0234-easymealorder.apiary-mock.com/menus')
+    axios.get('/api/order/unfinished/')
       .then(cb)
       .catch(error => {
         console.log(error)
