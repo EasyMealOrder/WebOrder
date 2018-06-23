@@ -18,6 +18,13 @@ body {
   margin: 0;
   padding: 0;
 }
+html {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+html::-webkit-scrollbar {
+  width: 0;
+}
 body {
   font-family: Helvetica, sans-serif;
   background-color: #EFEFEF;
