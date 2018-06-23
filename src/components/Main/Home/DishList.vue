@@ -104,8 +104,9 @@ export default {
 }
 .dish-item .dish-right .dish-bottom .dish-add {
   position: absolute;
-  right: 22vw;
-  bottom: 3vw;
+  right: 2vw;
+  bottom: 1.5vw;
+  margin: 0;
   height: 4vw;
   width: 4vw;
 }

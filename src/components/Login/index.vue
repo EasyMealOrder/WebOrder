@@ -36,6 +36,8 @@ export default {
   },
   methods: {
     clickSubmit () {
+      console.log('login in')
+      this.$store.commit('generateUserID')
       this.$router.push('/main/home/1')
     }
   }
