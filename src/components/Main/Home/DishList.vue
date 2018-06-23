@@ -11,7 +11,6 @@
             <el-button class="dish-sub" id="dish-sub-in-dish-list" icon="el-icon-minus" circle></el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
             <el-button class="dish-add" type="primary" icon="el-icon-plus" circle @click="addDishToCart(dish)"></el-button>
-
           </div>
         </div>
       </div>
@@ -50,7 +49,6 @@ export default {
 .dish-item {
   height: 5%;
   width: 100%;
-
 }
 .dish-button .dish-sub {
   font-size: 30px;
@@ -104,8 +102,9 @@ export default {
 }
 .dish-item .dish-right .dish-bottom .dish-add {
   position: absolute;
-  right: 22vw;
-  bottom: 3vw;
+  right: 2vw;
+  bottom: 1.5vw;
+  margin: 0;
   height: 4vw;
   width: 4vw;
 }

@@ -37,6 +37,7 @@ export default {
     }
   },
   methods: {
+
     cookLogin () {
       console.log(this.loginForm)
       const loginUrL = '/api/signin/'
@@ -52,6 +53,10 @@ export default {
         .catch(error => {
           console.log(error)
         })
+
+      console.log('login in')
+      this.$store.commit('generateUserID')
+      // this.$router.push('/main/home/1')
     }
   }
 }

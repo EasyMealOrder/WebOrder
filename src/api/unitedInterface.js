@@ -5,10 +5,12 @@
 import axios from 'axios'
 
 const apihost = 'http://193.112.24.51:8000'
+const genstr = '1234567890abcdefghijklmnopqrstuvwxyz'
 
 export default {
-  // 厨师用
+  genstr,
   apihost,
+  // 厨师用
   getAllToDoOrder (cb) {
     console.log('getAllToDoOrder called')
     /*
