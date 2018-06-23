@@ -7,11 +7,15 @@
           <p class="desc">{{ dish.description }}</p>
           <div class="plate-bottom">
             <p class="price">¥ {{ dish.price }}</p>
-            <el-button class="plate-sub" icon="el-icon-minus" circle @click="minusDishFromCart(dish)"></el-button>
+            <el-button class="plate-sub" circle @click="minusDishFromCart(dish)">
+              <i class="el-icon-minus button-pos"></i>
+            </el-button>
             <div class="plate-count">
               <p class="count-text">{{ dish.quantity }}</p>
             </div>
-            <el-button class="plate-button" type="primary" icon="el-icon-plus" @click="addDishToCart(dish)" circle></el-button>
+            <el-button class="plate-button" type="primary" @click="addDishToCart(dish)" circle>
+              <i class="el-icon-plus button-pos"></i>
+            </el-button>
           </div>
         </div>
       </div>
@@ -109,5 +113,12 @@ export default {
   text-align: center;
   vertical-align: top;
   line-height: 5vw;
+}
+.button-pos {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  top: 1.5vw;
 }
 </style>
