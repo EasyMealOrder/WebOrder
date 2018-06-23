@@ -62,6 +62,7 @@ body > .el-container {
   height: 95%;
   bottom: 0;
   position: fixed;
+  width: 100%;
 }
 .dish-part {
   height: 100%;
