@@ -13,6 +13,7 @@ module.exports = {
     proxyTable: {
       '/api': {
         logLevel: 'info',
+
         target: 'http://193.112.24.51:8000/',
         changeOrigin: true,
         pathRewrite: {

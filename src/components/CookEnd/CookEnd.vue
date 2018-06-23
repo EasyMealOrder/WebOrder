@@ -94,7 +94,10 @@ export default {
   },
   created () {
     service.getAllToDoOrder(
-      (textGet) => { this.allOrderToDo = textGet['data'] }
+      (textGet) => {
+        this.allOrderToDo = textGet['data']
+        console.log(textGet)
+      }
     )
   }
 }
