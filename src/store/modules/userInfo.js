@@ -1,6 +1,7 @@
 import service from '../../api/unitedInterface'
 
 const state = {
+  access_token: '',
   openid: '',
   nickname: 'NICKNAME',
   sex: 1,
@@ -13,25 +14,36 @@ const state = {
 }
 
 const getters = {
+  accessToken: state => state.access_token,
   userID: state => state.openid,
   username: state => state.nickname,
   sex: state => state.sex,
   headimgurl: state => state.headimgurl
 }
 
-const actions = {}
+const actions = {
+  wxLogIn ({ commit, state }) {
+    commit('generateAccessToken')
+    service.postAccessTokenToServer(res => {
+      console.log(res['data'])
+      commit('setUserInfo', res['data'])
+    }, state.access_token)
+  }
+}
 
 const mutations = {
-  generateUserID (state) {
+  generateAccessToken (state) {
     let generate = require('nanoid/generate')
-    state.openid = generate(service.genstr, 10)
-    console.log(state.openid)
+    state.access_token = generate(service.genstr, 10)
+    console.log(state.access_token)
   },
-  generateUsername (state) {
-    let generate = require('nanoid/generate')
-    let namenum = generate('1234567890', 3)
-    state.nickname = '用户' + namenum.toString()
-    console.log(state.nickname)
+  setUserInfo (state, obj) {
+    obj['access_token'] = state['access_token']
+    for (let propertyName in state) {
+      state[propertyName] = obj[propertyName]
+    }
+    console.log('set user info')
+    console.log(state.headimgurl)
   }
 }
 

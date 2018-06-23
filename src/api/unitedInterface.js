@@ -65,6 +65,18 @@ export default {
       })
   },
 
+  postAccessTokenToServer (cb, accesstoken) {
+    console.log('postAcessTokenToServer')
+
+    let params = new URLSearchParams()
+    params.append('session_id', accesstoken)
+    axios.post('/api/wxLogin/', params)
+      .then(cb)
+      .catch(error => {
+        console.log(error)
+      })
+  },
+
   // 消费者用
   buyDishes (products, cb, errorCb) {
     setTimeout(() => {

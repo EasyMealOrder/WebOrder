@@ -26,8 +26,7 @@ export default new Router({mode: 'history',
       name: 'Main',
       component: Main,
       children: [
-        {path: 'home/:id', name: 'Home', component: MainHome},
-        {path: 'order', name: 'Order', component: Order},
+        {path: 'home', name: 'Home', component: MainHome},
         {path: 'myself', name: 'Myself', component: Myself},
         {path: 'plate', name: 'PlateWrapper', component: PlateWrapper}
       ]
@@ -36,6 +35,11 @@ export default new Router({mode: 'history',
       path: '/payResult',
       name: 'PayResult',
       component: PayResult
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
     },
     {
       path: '/cookEnd',

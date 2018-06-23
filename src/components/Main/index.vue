@@ -26,8 +26,8 @@ export default {
           icon: 'el-icon-tickets'
         },
         {
-          msg: '订单',
-          link: {name: 'Order'},
+          msg: '我',
+          link: {name: 'Myself'},
           img: '/static/images/cart.svg',
           icon: 'el-icon-goods'
         }

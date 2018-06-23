@@ -35,7 +35,6 @@ const getters = {
 // actions
 const actions = {
   checkout ({ commit, state }, {dishes, route}) {
-    console.log('12312312321232123')
     console.log(dishes)
     console.log('route', route)
     const savedCartItems = [...state.added]

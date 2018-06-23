@@ -1,9 +1,5 @@
 <template>
   <el-container id='orderPage'>
-    <el-container class="myhead">
-      <img id="orderHead" src="/static/images/timg.jpeg" height="100%">
-    </el-container>
-    <el-container class="mybody">
     <el-main class="masonry">
       <div class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId">
         <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
@@ -26,7 +22,6 @@
         <div class="note">备注: {{order.note}} </div>
       </div>
     </el-main>
-    </el-container>
   </el-container>
 </template>
 <script>
@@ -56,31 +51,6 @@ export default {
   width: 100%;
   top: 5%;
   height: 95%;
-}
-
-.myhead {
-  position: fixed;
-  height: 20%;
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0;
-  top: 5%;
-}
-
-.mybody {
-  position: fixed;
-  height: 75%;
-  width: 100%;
-  top: 25%;
-}
-
-#orderHead {
-  position: absolute;
-  height: 80%;
-  width: auto;
-  margin-top: 3%;
-  margin-left: 5%;
 }
 
 .allOrderListInConsumerEnd {
