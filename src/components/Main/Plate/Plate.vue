@@ -34,9 +34,9 @@ export default {
 
 <style>
 .plate-list {
+  width: 100%;
   height: 95%;
   top: 5%;
-  position: fixed;
 }
 .plate-list .plate-item {
   height: 25vw;

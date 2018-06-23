@@ -92,10 +92,6 @@ export default {
     padding-top: 5px;
 }
 
-  html {
-  box-sizing: border-box;
-}
-
 .masonry {
   display: flex;
   flex-flow: row wrap;
