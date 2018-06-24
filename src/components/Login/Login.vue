@@ -35,7 +35,7 @@ export default {
       }
       setTimeout(() => {
         console.log('log in')
-      }, 1000)
+      }, 2000)
       this.wxLogIn(param)
     }
   }

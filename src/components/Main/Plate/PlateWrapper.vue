@@ -52,7 +52,8 @@ export default{
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '订单已取消'
+          message: '订单已取消',
+          customClass: 'showMessage'
         })
       })
       // let para = {
@@ -107,7 +108,7 @@ export default{
 .confirmButton {
   width: 40%;
   position: absolute;
-  bottom: 10%;
+  bottom: 6%;
   height: 15%;
   left: 5%;
   margin: 0;
@@ -115,9 +116,17 @@ export default{
 .cancelButton {
   width: 40%;
   position: absolute;
-  bottom: 10%;
+  bottom: 6%;
   height: 15%;
   right: 5%;
+}
+.showMessage {
+  width: 80%;
+  min-width: 300px;
+  margin: 0;
+}
+.showMessage p {
+  width: 80%;
 }
 
 /*适配手机*/

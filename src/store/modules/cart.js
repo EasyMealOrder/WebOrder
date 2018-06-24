@@ -4,12 +4,21 @@ import service from '../../api/unitedInterface'
 // shape: [{ id, quantity }]
 const state = {
   added: [],
-  checkoutStatus: null
+  checkoutStatus: null,
+  currentOrder: {
+    order: {
+      table: null,
+      price: null,
+      note: ''
+    },
+    dishrecord: []
+  }
 }
 
 // getters
 const getters = {
   checkoutStatus: state => state.checkoutStatus,
+  currentOrder: state => state.currentOrder,
 
   dishrecord: (state, getters, rootState) => {
     return state.added.map(({ id, quantity }) => {
@@ -95,6 +104,9 @@ const actions = {
 
 // mutations
 const mutations = {
+  setCurrentOrder (state, order) {
+    state.currentOrder = order
+  },
   pushDishToCart (state, { id }) {
     state.added.push({
       id,
