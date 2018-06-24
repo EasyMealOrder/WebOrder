@@ -70,7 +70,7 @@ export default {
     let params = new URLSearchParams()
     params.append('access_token', accesstoken)
     params.append('openid', openid)
-    axios.post('/api/wxLogin/', params)
+    axios.post('/api/wxLogin/', params, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
       .then(cb)
       .catch(error => {
         console.log(error)
