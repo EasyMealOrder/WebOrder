@@ -3,14 +3,14 @@
     <el-main>
       <Plate></Plate>
       <div class="pay-button-pos">
-        <el-button class="payButton" icon="el-icon-success" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
+        <el-button type="text" class="payButton" icon="el-icon-success" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
       </div>
     </el-main>
   </el-container>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import Plate from './Plate.vue'
 
 export default{
@@ -18,20 +18,48 @@ export default{
   computed: {
     ...mapGetters({
       totalPrice: 'cartTotalPrice',
-      dishes: 'cartDishes'
+      dishorder: 'dishrecord',
+      tableID: 'tableID'
     })
   },
   methods: {
     ...mapActions({
       checkout: 'checkout'
     }),
+    ...mapMutations([
+      'setCurrentOrder'
+    ]),
     payMeal () {
       console.log(this.$router)
-      let para = {
-        dishes: this.dishes,
-        route: this.$router
-      }
-      this.checkout(para)
+      this.$prompt('请输入备注', '提交订单', {
+        confirmButtonText: '支付订单',
+        cancelButtonText: '取消订单',
+        showClose: false,
+        customClass: 'messageBox',
+        confirmButtonClass: 'confirmButton',
+        cancelButtonClass: 'cancelButton'
+      }).then(({ value }) => {
+        let param = {
+          order: {
+            table: this.tableID,
+            price: this.totalPrice,
+            note: value
+          },
+          dishorder: this.dishorder
+        }
+        this.setCurrentOrder(param)
+        this.$router.push({name: 'PayResult'})
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '订单已取消'
+        })
+      })
+      // let para = {
+      //   dishes: this.dishes,
+      //   route: this.$router
+      // }
+      // this.checkout(para)
     }
   }
 }
@@ -66,10 +94,30 @@ export default{
   margin: 0;
   font-size: 2vw;
   text-align: center;
-  background-color: #B56969;
-  border-color: #B56969;
   position: fixed;
   bottom: 0px;
+}
+.messageBox {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+  width: 70%;
+  height: 30%;
+}
+.confirmButton {
+  width: 40%;
+  position: absolute;
+  bottom: 10%;
+  height: 15%;
+  left: 5%;
+  margin: 0;
+}
+.cancelButton {
+  width: 40%;
+  position: absolute;
+  bottom: 10%;
+  height: 15%;
+  right: 5%;
 }
 
 /*适配手机*/

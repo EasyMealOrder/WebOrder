@@ -7,11 +7,18 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'payResultPage',
+  computed: {
+    ...mapGetters([
+      'currentOrder'
+    ])
+  },
   methods: {
     backToPlate () {
+      console.log(this.currentOrder)
       this.$router.go(-1)
     }
   }

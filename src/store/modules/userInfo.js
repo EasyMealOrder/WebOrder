@@ -19,7 +19,8 @@ const getters = {
   userID: state => state.openid,
   username: state => state.nickname,
   sex: state => state.sex,
-  headimgurl: state => state.headimgurl
+  headimgurl: state => state.headimgurl,
+  tableID: state => state.tableID
 }
 
 const actions = {

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import cart from './modules/cart'
 import allDishes from './modules/allDishes'
 import userInfo from './modules/userInfo'
+import orderCache from './modules/orderCache'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   modules: {
     cart,
     allDishes,
-    userInfo
+    userInfo,
+    orderCache
   },
   strict: debug
 })

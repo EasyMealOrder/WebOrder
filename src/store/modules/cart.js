@@ -11,6 +11,18 @@ const state = {
 const getters = {
   checkoutStatus: state => state.checkoutStatus,
 
+  dishrecord: (state, getters, rootState) => {
+    return state.added.map(({ id, quantity }) => {
+      const dish = rootState.allDishes.all.find(dish => dish.id === id)
+      return {
+        dishID: id,
+        name: dish.name,
+        number: quantity,
+        price: dish.price
+      }
+    })
+  },
+
   cartDishes: (state, getters, rootState) => {
     return state.added.map(({ id, quantity }) => {
       const dish = rootState.allDishes.all.find(dish => dish.id === id)
