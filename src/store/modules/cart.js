@@ -55,7 +55,7 @@ const getters = {
 
 // actions
 const actions = {
-  checkout ({ commit, state }, {dishes, route}) {
+  checkout ({ commit, state }, {dishes, route, message}) {
     console.log(dishes)
     console.log('route', route)
     const savedCartItems = [...state.added]
@@ -68,15 +68,15 @@ const actions = {
         commit('setCheckoutStatus', 'successful')
         console.log('------------success')
         // todo:跳转到成功页面
-        // route.push('/payResult')
+        route.push('/payResult')
       },
-      () => {
+      (status) => {
         commit('setCheckoutStatus', 'failed')
         // rollback to the cart saved before sending the request
         commit('setCartItems', { items: savedCartItems })
         console.log('------------fail')
         // todo: 跳转到失败页面
-        route.push('/payResult')
+        message('网络错误 ' + status)
       }
     )
   },
@@ -105,6 +105,8 @@ const actions = {
 // mutations
 const mutations = {
   setCurrentOrder (state, order) {
+    console.log('set current order call')
+    console.log(order)
     state.currentOrder = order
   },
   pushDishToCart (state, { id }) {

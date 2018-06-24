@@ -23,12 +23,14 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'accessToken'
+      'accessToken',
+      'tableID'
     ])
   },
   mounted () {
     console.log('The table id is: ' + this.$route.params.id)
     this.setTableID(this.$route.params.id)
+    console.log('after set table id, id is  ' + this.tableID)
     if (this.accessToken === '') {
       this.generateOpenId()
       this.generateAccessToken()

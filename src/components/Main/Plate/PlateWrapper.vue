@@ -18,8 +18,9 @@ export default{
   computed: {
     ...mapGetters({
       totalPrice: 'cartTotalPrice',
-      dishorder: 'dishrecord',
-      tableID: 'tableID'
+      dishrecord: 'dishrecord',
+      tableID: 'tableID',
+      currentOrder: 'currentOrder'
     })
   },
   methods: {
@@ -29,8 +30,24 @@ export default{
     ...mapMutations([
       'setCurrentOrder'
     ]),
+    postOrder (value) {
+      console.log('post order call')
+      console.log(this.dishrecord)
+      this.setCurrentOrder({
+        order: {
+          table: this.tableID,
+          price: this.totalPrice,
+          note: value
+        },
+        dishrecord: this.dishrecord
+      })
+      this.checkout({
+        dishes: this.currentOrder,
+        route: this.$router,
+        message: this.$message
+      })
+    },
     payMeal () {
-      console.log(this.$router)
       this.$prompt('请输入备注', '提交订单', {
         confirmButtonText: '支付订单',
         cancelButtonText: '取消订单',
@@ -39,25 +56,12 @@ export default{
         confirmButtonClass: 'confirmButton',
         cancelButtonClass: 'cancelButton'
       }).then(({ value }) => {
-        let param = {
-          order: {
-            table: this.tableID,
-            price: this.totalPrice,
-            note: value
-          },
-          dishorder: this.dishorder
-        }
-        this.setCurrentOrder(param)
-        console.log(this.currentOrder)
-        let data = {
-          dishes: this.currentOrder,
-          route: this.$router
-        }
-        this.checkout(data)
+        console.log('table id in then is ' + this.tableID)
+        this.postOrder(value)
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '订单已取消',
+          message: '支付失败',
           customClass: 'showMessage'
         })
       })

@@ -83,10 +83,13 @@ export default {
     params.append('order', order)
     params.append('dishrecord', dishrecord)
 
+    console.log(order)
+    console.log(dishrecord)
     axios.post('/api/order/create/', params, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
       .then(cb)
       .catch(error => {
-        console.log(error)
+        console.log(error.response['status'])
+        errorCb(error.response['status'])
       })
   },
 
