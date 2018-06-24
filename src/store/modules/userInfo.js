@@ -25,11 +25,14 @@ const getters = {
 
 const actions = {
   wxLogIn ({ commit, state }, { router, page }) {
-    commit('generateAccessToken')
     service.postAccessTokenToServer(res => {
       commit('setUserInfo', res['data'])
       router.push(page)
-    }, state.access_token)
+    },
+    {
+      accesstoken: state.access_token,
+      openid: state.openid
+    })
   }
 }
 
@@ -38,6 +41,10 @@ const mutations = {
     let generate = require('nanoid/generate')
     state.access_token = generate(service.genstr, 10)
     console.log(state.access_token)
+  },
+  generateOpenId (state) {
+    let generate = require('nanoid/generate')
+    state.access_token = generate(service.genstr, 6)
   },
   setUserInfo (state, obj) {
     for (let propertyName in obj) {

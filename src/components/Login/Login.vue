@@ -13,7 +13,9 @@ import { mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   methods: {
     ...mapMutations([
-      'setTableID'
+      'setTableID',
+      'generateAccessToken',
+      'generateOpenId'
     ]),
     ...mapActions([
       'wxLogIn'
@@ -28,6 +30,8 @@ export default {
     console.log('The table id is: ' + this.$route.params.id)
     this.setTableID(this.$route.params.id)
     if (this.accessToken === '') {
+      this.generateOpenId()
+      this.generateAccessToken()
       console.log('created and wxLogIn')
       let param = {
         router: this.$router,

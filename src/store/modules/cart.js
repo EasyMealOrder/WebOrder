@@ -68,7 +68,7 @@ const actions = {
         commit('setCheckoutStatus', 'successful')
         console.log('------------success')
         // todo:跳转到成功页面
-        route.push('/payResult')
+        // route.push('/payResult')
       },
       () => {
         commit('setCheckoutStatus', 'failed')

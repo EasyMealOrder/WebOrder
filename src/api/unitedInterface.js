@@ -7,10 +7,16 @@ import axios from 'axios'
 const apihost = 'http://193.112.24.51:8000'
 const genstr = '1234567890abcdefghijklmnopqrstuvwxyz'
 
+var getCookie = (name) => {
+  let value = '; ' + document.cookie
+  let parts = value.split('; ' + name + '=')
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
 export default {
   genstr,
   apihost,
-  // 厨师用
+  // 获取订单
   getAllToDoOrder (cb) {
     console.log('getAllToDoOrder called')
 
@@ -58,11 +64,12 @@ export default {
       })
   },
 
-  postAccessTokenToServer (cb, accesstoken) {
+  postAccessTokenToServer (cb, {accesstoken, openid}) {
     console.log('postAcessTokenToServer')
 
     let params = new URLSearchParams()
-    params.append('session_id', accesstoken)
+    params.append('access_token', accesstoken)
+    params.append('openid', openid)
     axios.post('/api/wxLogin/', params)
       .then(cb)
       .catch(error => {
@@ -71,8 +78,12 @@ export default {
   },
 
   // 消费者用
-  buyDishes (products, cb, errorCb) {
-    axios.post('/api/order/create/')
+  buyDishes ({ order, dishrecord }, cb, errorCb) {
+    let params = new URLSearchParams()
+    params.append('order', order)
+    params.append('dishrecord', dishrecord)
+
+    axios.post('/api/order/create/', params, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
       .then(cb)
       .catch(error => {
         console.log(error)
