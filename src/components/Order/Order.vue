@@ -25,7 +25,7 @@
   </el-container>
 </template>
 <script>
-import service from '../../../api/unitedInterface'
+import service from '../../api/unitedInterface'
 
 export default {
   name: 'cookEndPage',
@@ -39,7 +39,10 @@ export default {
     // todo：之后改回是客户用的接口
     service.getAllMyOrder(
       null,
-      (textGet) => { this.allMyOrder = textGet['data'] }
+      (res) => {
+        this.allMyOrder = res['data']
+        console.log(res['data'])
+      }
     )
   }
 }

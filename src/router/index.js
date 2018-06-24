@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Login from '../components/Login/index.vue'
+import Login from '../components/Login/Login.vue'
 import Main from '../components/Main/index.vue'
 import MainHome from '../components/Main/Home/Home.vue'
-import Order from '../components/Main/Order/Order.vue'
+import Order from '../components/Order/Order.vue'
 import Myself from '../components/Main/Myself/Myself.vue'
 import PlateWrapper from '../components/Main/Plate/PlateWrapper.vue'
 import PayResult from '../components/payResult'
@@ -12,12 +12,13 @@ import CookEnd from '../components/CookEnd/CookEnd'
 
 Vue.use(Router)
 
-export default new Router({mode: 'history',
+export default new Router({
+  mode: 'history',
   base: __dirname,
   linkActiveClass: 'active',
   routes: [
     {
-      path: '/',
+      path: '/login/:id',
       name: 'Login',
       component: Login
     },

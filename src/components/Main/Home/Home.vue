@@ -14,12 +14,10 @@
 <script>
 import DishList from './DishList.vue'
 import AsideList from './Aside.vue'
-import { mapActions, mapGetters } from 'vuex'
 export default {
   components: {DishList, AsideList},
   data () {
     return {
-      desk: this.$route.params.id,
       items: [
         {
           name: '优惠',
@@ -37,23 +35,6 @@ export default {
           id: 2
         }
       ]
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'accessToken'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'wxLogIn'
-    ])
-  },
-  created () {
-    console.log('Home created')
-    if (this.accessToken === '') {
-      console.log('created and wxLogIn')
-      this.wxLogIn()
     }
   }
 }

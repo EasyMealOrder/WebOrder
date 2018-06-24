@@ -14,7 +14,7 @@ export default {
   getAllToDoOrder (cb) {
     console.log('getAllToDoOrder called')
 
-    axios.get('/api/order/unfinished/')
+    axios.get('/api/order/pages/4/1')
       .then(cb)
       .catch(error => {
         console.log(error)
@@ -83,6 +83,12 @@ export default {
   // 消费者用
   // 暂定用session作为标识
   getAllMyOrder (userSession, cb) {
-    this.getAllToDoOrder(cb)
+    console.log('getAllToDoOrder called')
+
+    axios.get('/api/order/pages/4/1/')
+      .then(cb)
+      .catch(error => {
+        console.log(error)
+      })
   }
 }

@@ -5,7 +5,7 @@
         <img :src="headimgurl" />
         <div class="user-right">
           <p class="username">{{ username }}</p>
-          <p class="userID">{{ userID }}</p>
+          <p class="userID">用户ID : {{ userID }}</p>
         </div>
       </div>
       <div class="history-order" @click="clickHistory">
@@ -26,15 +26,13 @@ export default {
   computed: {
     ...mapGetters([
       'username',
-      'headimgurl'
-    ]),
-    userID () {
-      return '用户ID : ' + this.$store.getters.userID
-    }
+      'headimgurl',
+      'userID'
+    ])
   },
   methods: {
     clickHistory () {
-      this.$router.push('/order')
+      this.$router.push({name: 'Order'})
     }
   }
 }
