@@ -1,32 +1,22 @@
 <template>
   <div id="pay-result-wrapper">
     <img id="pay-result-img" src="http://edu.asean168.com/uploadfile/2015/0630/20150630024710512.jpg">
-    <p>5秒后自动跳转</p>
-    <el-button type="success" id="return-btn-in-pay-result-page" @click="wxPay">假装微信支付成功</el-button>
+    <p>假装支付成功</p>
+    <el-button type="success" id="return-btn-in-pay-result-page" @click="goback">返回</el-button>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'payResultPage',
-  computed: {
-    ...mapGetters([
-      'currentOrder'
-    ])
-  },
   methods: {
     ...mapActions([
       'checkout'
     ]),
-    wxPay () {
-      console.log(this.currentOrder)
-      let param = {
-        dishes: this.currentOrder,
-        route: this.$router
-      }
-      this.checkout(param)
+    goback () {
+      this.$router.go(-1)
     }
   }
 }

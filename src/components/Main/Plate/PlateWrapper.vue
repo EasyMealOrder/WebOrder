@@ -48,7 +48,12 @@ export default{
           dishorder: this.dishorder
         }
         this.setCurrentOrder(param)
-        this.$router.push({name: 'PayResult'})
+        console.log(this.currentOrder)
+        let data = {
+          dishes: this.currentOrder,
+          route: this.$router
+        }
+        this.checkout(data)
       }).catch(() => {
         this.$message({
           type: 'info',

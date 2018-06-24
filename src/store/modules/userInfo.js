@@ -25,6 +25,7 @@ const getters = {
 
 const actions = {
   wxLogIn ({ commit, state }, { router, page }) {
+    console.log(state.openid)
     service.postAccessTokenToServer(res => {
       commit('setUserInfo', res['data'])
       router.push(page)
@@ -44,7 +45,7 @@ const mutations = {
   },
   generateOpenId (state) {
     let generate = require('nanoid/generate')
-    state.access_token = generate(service.genstr, 6)
+    state.openid = generate(service.genstr, 6)
   },
   setUserInfo (state, obj) {
     for (let propertyName in obj) {
