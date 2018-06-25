@@ -1,6 +1,6 @@
 <template>
   <el-carousel id="carousel-style" :interval="3000">
-    <el-carousel-item v-for="item in allDishes" :key="item.id">
+    <el-carousel-item v-for="item in carouselDishes" :key="item.id">
       <img :src="item.dish_img" class="carousel-img" />
     </el-carousel-item>
   </el-carousel>
@@ -12,7 +12,7 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'allDishes'
+      'carouselDishes'
     ])
   }
 }

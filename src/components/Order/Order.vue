@@ -2,17 +2,17 @@
   <el-container id='orderPage'>
     <el-main class="masonry">
       <div class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId">
-        <div class="orderMetaData">{{order.deskId}}号桌    {{order.orderTime}}</div>
-        <div class="orderMetaData"> 订单号 {{order.orderId}}</div>
+        <div class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</div>
+        <div class="orderMetaData"> 订单号 {{order.id}}</div>
         <hr/>
 
-        <div class="wrapperOfDishesInToDoOrder" v-for="dish in order.dishList" :key="dish.dishId">
+        <div class="wrapperOfDishesInToDoOrder">
           <div id="dishWrapper">
-           <div id="dishNameItem">{{dish.dishName}}</div>
-           <div id="dishAmountItem">{{dish.num}}份</div>
+           <div id="dishNameItem">{{order.price}}元</div>
+           <!-- <div id="dishAmountItem">{{dish.num}}份</div> -->
            <div id="dishCompletedItem">
-            <div id="ADishInAOrderIsFinishedText" v-show="dish.isDishCompleted">已完成</div>
-            <div id="ADishInAOrderIsNotFinishedText" v-show="!dish.isDishCompleted">未完成</div>
+            <div id="ADishInAOrderIsFinishedText" v-show="order.finished">已完成</div>
+            <div id="ADishInAOrderIsNotFinishedText" v-show="!order.finished">未完成</div>
            </div>
           </div>
         </div>
@@ -38,7 +38,6 @@ export default {
     // 假装是用户订单
     // todo：之后改回是客户用的接口
     service.getAllMyOrder(
-      null,
       (res) => {
         this.allMyOrder = res['data']
         console.log(res['data'])

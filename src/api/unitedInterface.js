@@ -68,10 +68,10 @@ export default {
 
   // 消费者用
   // 暂定用session作为标识
-  getAllMyOrder (userSession, cb) {
+  getAllMyOrder (cb) {
     console.log('getAllToDoOrder called')
 
-    axios.get('/api/order/pages/4/1/')
+    axios.post('/api/order/getUserOder/', null, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
       .then(cb)
       .catch(error => {
         console.log(error)

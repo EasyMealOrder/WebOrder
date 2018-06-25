@@ -11,6 +11,7 @@ const state = {
 // getters
 const getters = {
   allDishes: state => state.all,
+  carouselDishes: state => state.all.slice(0, 4),
   allTypes: state => state.typeList,
   shownDishes: state => state.shownDishes
 }
