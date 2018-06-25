@@ -16,32 +16,6 @@ var getCookie = (name) => {
 export default {
   genstr,
   apihost,
-  // 获取订单
-  getAllToDoOrder (cb) {
-    console.log('getAllToDoOrder called')
-
-    axios.get('/api/order/pages/4/1')
-      .then(cb)
-      .catch(error => {
-        console.log(error)
-      })
-  },
-
-  // 厨师用
-  finishADishInAOrder: function (orderId, dishId, cb, errorCb) {
-    // todo: 向后端更新状态
-    // 成功则cb
-    cb()
-    // 失败则errorCb
-  },
-
-  // 厨师用
-  finishAOrder: function (orderIdk, cb, errorCb) {
-    // todo：像后端更新状态
-    // 成功则cb
-    cb()
-    // 失败则errorCb
-  },
 
   // 消费者用
   getDishesFromService (cb) {
