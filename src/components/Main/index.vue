@@ -1,7 +1,9 @@
 <template>
     <el-container id="main">
         <tabs :items="children"></tabs>
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
     </el-container>
 </template>
 

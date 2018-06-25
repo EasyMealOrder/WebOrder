@@ -29,7 +29,7 @@ export default {
   },
   mounted () {
     console.log('The table id is: ' + this.$route.params.id)
-    this.setTableID(this.$route.params.id)
+    this.setTableID(Number(this.$route.params.id))
     console.log('after set table id, id is  ' + this.tableID)
     if (this.accessToken === '') {
       this.generateOpenId()

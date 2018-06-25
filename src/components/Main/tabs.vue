@@ -1,11 +1,11 @@
 <template>
-    <el-header class="tabs">
-        <el-row>
-            <router-link v-for="item in items" :key="item.msg" :to="item.link">
-                <el-col><i :class="item.icon">{{item.msg}}</i></el-col>
-            </router-link>
-        </el-row>
-    </el-header>
+  <el-header class="tabs">
+    <el-row>
+      <router-link v-for="item in items" :key="item.msg" :to="item.link">
+        <el-col><i :class="item.icon">{{item.msg}}</i></el-col>
+      </router-link>
+    </el-row>
+  </el-header>
 </template>
 
 <script>

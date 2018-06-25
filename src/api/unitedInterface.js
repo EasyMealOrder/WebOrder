@@ -78,14 +78,13 @@ export default {
   },
 
   // 消费者用
-  buyDishes ({ order, dishrecord }, cb, errorCb) {
-    let params = new URLSearchParams()
-    params.append('order', order)
-    params.append('dishrecord', dishrecord)
-
-    console.log(order)
-    console.log(dishrecord)
-    axios.post('/api/order/create/', params, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
+  buyDishes (data, cb, errorCb) {
+    let params = JSON.stringify(data)
+    axios.post('/api/order/create/', params, {
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken'),
+        'content-type': 'application/json'
+      }})
       .then(cb)
       .catch(error => {
         console.log(error.response['status'])
