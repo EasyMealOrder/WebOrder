@@ -1,5 +1,9 @@
 <template>
   <el-container id="home">
+    <div id="home-carousel">
+      <img-carousel></img-carousel>
+    </div>
+    <el-container id="home-main">
       <el-aside width="20%">
         <div class="aside-part">
           <aside-list :items="items"></aside-list>
@@ -8,14 +12,17 @@
       <el-main>
         <dish-list ></dish-list>
       </el-main>
+    </el-container>
   </el-container>
 </template>
 
 <script>
 import DishList from './DishList.vue'
 import AsideList from './Aside.vue'
+import ImgCarousel from './ImgCarousel.vue'
+
 export default {
-  components: {DishList, AsideList},
+  components: {DishList, AsideList, ImgCarousel},
   data () {
     return {
       items: [
@@ -59,6 +66,18 @@ body > .el-container {
 }
 #home {
   height: 92%;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+#home-carousel {
+  height: 12%;
+  position: absolute;
+  top: -0.5%;
+  width: 100%;
+}
+#home-main {
+  height: 80%;
   bottom: 0;
   position: fixed;
   width: 100%;
