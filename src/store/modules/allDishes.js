@@ -68,9 +68,7 @@ const mutations = {
 
   // 按种类设置数组
   setShownDishes (state, t) {
-    console.log(t)
     state.shownDishes = state.all.filter(item => item.type.includes(t))
-    console.log(state.shownDishes)
   }
 }
 
