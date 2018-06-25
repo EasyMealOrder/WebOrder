@@ -97,9 +97,6 @@ export default {
   height: 4vw;
   width: 4vw;
 }
-.plate-sub {
-  background-color: #909399;
-}
 .plate-item .plate-right .plate-bottom .plate-count {
   position: absolute;
   height: 4vw;

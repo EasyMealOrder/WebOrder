@@ -58,7 +58,7 @@ export default {
 .el-main {
   line-height: 160px;
   height: 95%;
-  padding: 0;
+  padding: 0 0 0 1%;
   top: 5%;
 }
 body > .el-container {
