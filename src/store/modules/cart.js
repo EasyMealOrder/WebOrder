@@ -19,6 +19,8 @@ const state = {
 const getters = {
   checkoutStatus: state => state.checkoutStatus,
   currentOrder: state => state.currentOrder,
+  // 检查购物车是否为空
+  checkIfEmpty: state => state.added.length,
 
   dishrecord: (state, getters, rootState) => {
     return state.added.map(({ id, quantity }) => {

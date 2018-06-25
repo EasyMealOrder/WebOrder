@@ -3,7 +3,12 @@
     <el-main>
       <Plate></Plate>
       <div class="pay-button-pos">
-        <el-button type="text" class="payButton" icon="el-icon-success" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
+        <!-- 如果购物车为空，不显示支付按钮 -->
+        <el-button v-if="checkIfEmpty > 0" type="text" class="payButton" icon="el-icon-success" @click="payMeal">去付款，共：￥{{totalPrice}}</el-button>
+      </div>
+      <div class="pay-empty-pos">
+        <!-- 购物车为空时显示下面文字 -->
+        <p v-if="checkIfEmpty == 0">餐盘空空如也~</p>
       </div>
     </el-main>
   </el-container>
@@ -20,7 +25,8 @@ export default{
       totalPrice: 'cartTotalPrice',
       dishrecord: 'dishrecord',
       tableID: 'tableID',
-      currentOrder: 'currentOrder'
+      currentOrder: 'currentOrder',
+      checkIfEmpty: 'checkIfEmpty'
     })
   },
   methods: {
@@ -96,6 +102,16 @@ export default{
   height: 10vw;
   width: 100%;
 }
+.pay-empty-pos {
+  position: absolute;
+  width: 100%;
+  height: 10vw;
+  bottom: 60%;
+  text-align: center;
+  margin: 0;
+  font-size: 15px;
+  color: grey;
+}
 
 /*适配电脑*/
 .payButton {
@@ -106,6 +122,8 @@ export default{
   text-align: center;
   position: fixed;
   bottom: 0px;
+  background-color: rgb(33, 138, 230);
+  color: white;
 }
 .messageBox {
   position: absolute;
