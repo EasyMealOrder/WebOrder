@@ -1,56 +1,47 @@
 <template>
-  <el-header class="tabs">
-    <el-row>
-      <router-link v-for="item in items" :key="item.msg" :to="item.link">
-        <el-col><i :class="item.icon">{{item.msg}}</i></el-col>
-      </router-link>
-    </el-row>
-  </el-header>
+  <el-tabs v-model="activeName" class="tabs-style" @tab-click="onTabClick">
+    <el-tab-pane v-for="item in items" :key="item.id" :label="item.msg" :name="item.link"></el-tab-pane>
+  </el-tabs>
 </template>
 
 <script>
 export default {
-  name: 'tabs',
-  props: ['items']
+  props: ['items'],
+  data () {
+    return {
+      activeName: this.items[0].link
+    }
+  },
+  methods: {
+    onTabClick (tab) {
+      this.$router.push(tab.name)
+    }
+  }
 }
 </script>
 
 <style>
-.el-header {
-  padding: 0;
-  top: 0;
-  left: 0;
-  background-color: #84bce9;
-  width: 100%;
-}
-.el-row {
-  margin-bottom: 0;
-  width: 100%;
-  height: 100%;
-}
-.el-col {
-  color: rgb(11, 115, 212);
-  text-align: center;
-  border-radius: 4px;
-  width: 33.3%;
-  height: 100%;
-  padding-top: 7px;
-}
-.el-button {
-  font-family: Helvetica;
-  width: 100%;
-  height: 100%;
-}
 div {
   font-family: Helvetica;
 }
-.tabs {
+.tabs-style {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #84bce9;
   width: 100%;
-  height: 5% ! important;
+  height: 5%;
+}
+.tabs-style .el-tabs__header  {
+  padding: 0;
+  position: relative;
+  margin: 0;
+}
+.tabs-style .el-tabs__nav{
+  width: 100%;
+}
+.tabs-style .el-tabs__nav .el-tabs__item {
+  width: 33%;
+  text-align: center;
 }
 .tabs > ul,
 .tabs > ul > li {

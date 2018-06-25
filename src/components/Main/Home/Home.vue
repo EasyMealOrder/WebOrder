@@ -58,7 +58,7 @@ body > .el-container {
   margin: 0;
 }
 #home {
-  height: 95%;
+  height: 92%;
   bottom: 0;
   position: fixed;
   width: 100%;

@@ -1,9 +1,7 @@
 <template>
     <el-container id="main">
         <tabs :items="children"></tabs>
-        <keep-alive>
-          <router-view></router-view>
-        </keep-alive>
+        <router-view></router-view>
     </el-container>
 </template>
 
@@ -17,21 +15,21 @@ export default {
       children: [
         {
           msg: '首页',
-          link: {name: 'Home'},
+          link: '/main/home',
           img: '/static/images/home.svg',
-          icon: 'el-icon-menu'
+          id: 0
         },
         {
           msg: '餐盘',
-          link: {name: 'PlateWrapper'},
+          link: '/main/plate',
           img: '/static/images/plate.svg',
-          icon: 'el-icon-tickets'
+          id: 1
         },
         {
           msg: '我',
-          link: {name: 'Myself'},
+          link: '/main/myself',
           img: '/static/images/cart.svg',
-          icon: 'el-icon-goods'
+          id: 2
         }
       ]
     }
