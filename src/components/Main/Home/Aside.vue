@@ -1,21 +1,32 @@
 <template>
-  <div class="aside-list">
-    <div class="aside-item" v-for="item in types" :key="item.tid">
+  <el-tabs type="card" class="aside-list" tab-position="left" v-model="activeName" @tab-click="showClickType">
+    <el-tab-pane v-for="item in types" :key="item.tid" :label="item.dtype" :name="item.dtype"></el-tab-pane>
+    <!-- <div class="aside-item" v-for="item in types" :key="item.tid">
       <el-button class="aside-button" type="primary" @click="showDishesByType(item.dtype)">{{ item.dtype }}</el-button>
-    </div>
-  </div>
+    </div> -->
+  </el-tabs>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  data () {
+    return {
+      activeName: '全部'
+    }
+  },
   computed: mapGetters({
     types: 'allTypes'
   }),
-  methods: mapActions([
-    'showDishesByType'
-  ])
+  methods: {
+    ...mapActions([
+      'showDishesByType'
+    ]),
+    showClickType (tab) {
+      this.showDishesByType(tab.name)
+    }
+  }
 }
 </script>
 
@@ -23,12 +34,10 @@ export default {
 .aside-list {
   height: 100%;
 }
-.aside-item {
-  margin: 0 0 0 0;
-  height: 10vw;
-  width: 100%;
-  float: left;
-
+.tabs-list .el-tabs__header  {
+  padding: 0;
+  position: relative;
+  margin: 0;
 }
 .aside-button {
   width: 100%;

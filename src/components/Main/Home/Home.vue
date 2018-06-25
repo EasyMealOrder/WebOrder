@@ -43,7 +43,7 @@ export default {
 
 <style>
 .el-aside {
-  background-color: #D3DCE6;
+  background-color: #ffffff;
   color: #333;
   text-align: center;
   line-height: 200px;
@@ -67,6 +67,7 @@ body > .el-container {
   height: 100%;
 }
 .aside-part {
+  width: 100%;
   height: 100%;
 }
 </style>

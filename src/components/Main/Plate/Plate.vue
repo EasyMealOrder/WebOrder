@@ -85,7 +85,7 @@ export default {
 .plate-item .plate-right .plate-bottom .plate-button {
   position: absolute;
   right: 2vw;
-  bottom: 1.5vw;
+  bottom: 2vw;
   margin: 0;
   height: 4vw;
   width: 4vw;
@@ -93,7 +93,7 @@ export default {
 .plate-item .plate-right .plate-bottom .plate-sub {
   position: absolute;
   right: 20vw;
-  bottom: 1.5vw;
+  bottom: 2vw;
   height: 4vw;
   width: 4vw;
 }
@@ -104,8 +104,8 @@ export default {
   position: absolute;
   height: 4vw;
   width: 4vw;
-  right: 12vw;
-  bottom: 3vw;
+  right: 12.5vw;
+  bottom: 3.5vw;
 }
 .plate-item .plate-right .plate-bottom .plate-count .count-text{
   height: 100%;
