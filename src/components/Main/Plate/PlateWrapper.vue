@@ -132,6 +132,9 @@ export default{
   width: 70%;
   height: 30%;
 }
+.el-message-box.messageBox {
+  width: 70%;
+}
 .confirmButton {
   width: 40%;
   position: absolute;
