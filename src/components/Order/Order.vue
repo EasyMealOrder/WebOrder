@@ -1,10 +1,14 @@
 <template>
   <el-container id='orderPage'>
+    <div class="orderPageHeader">
+      <el-button id="goBackButton" icon="el-icon-arrow-left" @click="goBack">历史订单</el-button>
+    </div>
     <el-main class="masonry">
-      <div class="allOrderListInConsumerEnd item" v-for="order in allMyOrder" :key="order.orderId">
-        <div class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</div>
-        <div class="orderMetaData"> 订单号 {{order.id}}</div>
-        <hr/>
+      <el-card class="allOrderListInConsumerEnd item box-card" v-for="order in allMyOrder" :key="order.orderId" shadow="hover">
+        <div slot="header" class="clearfix">
+          <span class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</span>
+          <span class="orderMetaData"> 订单号 {{order.id}}</span>
+        </div>
 
         <div class="wrapperOfDishesInToDoOrder">
           <div id="dishWrapper">
@@ -20,7 +24,7 @@
         <hr/>
 
         <div class="note">备注: {{order.note}} </div>
-      </div>
+      </el-card>
     </el-main>
   </el-container>
 </template>
@@ -43,6 +47,11 @@ export default {
         console.log(res['data'])
       }
     )
+  },
+  methods: {
+    goBack () {
+      this.$router.replace('/main/myself')
+    }
   }
 }
 </script>
@@ -51,51 +60,70 @@ export default {
 #orderPage {
   position: fixed;
   width: 100%;
-  top: 5%;
-  height: 95%;
+  height: 100%;
+  margin: 0;
+  background-color: #fff;
+}
+
+.orderPageHeader {
+  position: fixed;
+  height: 8%;
+  width: 100%;
+  top: 0;
+}
+
+#goBackButton {
+  position: absolute;
+  width: 10%;
+  border-style: none;
+  padding-top: 15px;
+  font-size: 15px;
 }
 
 .allOrderListInConsumerEnd {
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(225, 226, 226);
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  background-color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .masonry {
+  position: absolute;
+  height: 92% ! important;
+  top: 8% ! important;
   display: flex;
   flex-flow: row wrap;
   margin-right: 0;
   margin-left: 0; /* Adjustment for the gutter */
   width: 100%;
-  top: 36%
 }
 
 .item {
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: auto;
-  height: 50%;
+  height: auto;
   width: 80%;
+  line-height: 14px;
   margin-top: 2%;
   margin-right: auto;
   margin-left: auto; /* Some gutter */
 }
 
 .orderMetaData {
-  height: 8vw;
-  line-height: 8vw;
   font-size: 14px;
-  background-color: #e6cf8b;
+  padding: 2px;
+  border-radius: 3px;
 }
 
 #dishWrapper {
   display: flex;
   flex-flow: row wrap;
-  height: 8vw;
-  line-height: 8vw;
 }
 
 #dishNameItem,#dishCompletedItem, #dishCompletedItem {
@@ -142,5 +170,7 @@ export default {
   height: 10vw;
   line-height: 10vw;
   font-size: 14px;
+  padding: 3px;
+  border-radius: 4px;
 }
 </style>
