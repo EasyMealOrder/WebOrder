@@ -97,7 +97,7 @@ export default{
 }
 .pay-button-pos {
   position: fixed;
-  bottom: 0;
+  bottom: 5%;
   margin: 0;
   height: 10vw;
   width: 100%;
@@ -121,7 +121,7 @@ export default{
   font-size: 2vw;
   text-align: center;
   position: fixed;
-  bottom: 0px;
+  bottom: 5%;
   background-color: rgb(33, 138, 230);
   color: white;
 }
