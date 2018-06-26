@@ -55,9 +55,9 @@ export default {
   text-align: center;
   line-height: 200px;
 }
-.el-main {
+#home-main > .el-main {
   line-height: 160px;
-  height: 95%;
+  height: 100%;
   padding: 0 0 0 1%;
   top: 5%;
 }

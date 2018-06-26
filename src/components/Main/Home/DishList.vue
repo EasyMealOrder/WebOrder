@@ -50,6 +50,9 @@ export default {
   width: 100%;
   top: 5%;
 }
+.dish-list > .el-main {
+  padding: 0;
+}
 .dish-item {
   height: 5%;
   width: 100%;
