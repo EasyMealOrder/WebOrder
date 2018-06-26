@@ -12,7 +12,7 @@
               <i class="el-icon-minus button-pos"></i>
             </el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
-            <el-button class="dish-add" type="primary" circle @click="addDishToCart(dish)">
+            <el-button class="dish-add" type="primary" circle @click.native="addDishToCart(dish)">
               <i class="el-icon-plus button-pos"></i>
             </el-button>
           </div>

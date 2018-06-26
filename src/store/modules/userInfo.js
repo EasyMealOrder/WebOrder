@@ -28,7 +28,7 @@ const actions = {
     console.log(state.openid)
     service.postAccessTokenToServer(res => {
       commit('setUserInfo', res['data'])
-      router.push(page)
+      router.replace(page)
     },
     {
       accesstoken: state.access_token,

@@ -1,8 +1,8 @@
 <template>
-    <el-container id="main">
-        <tabs :items="children"></tabs>
-        <router-view></router-view>
-    </el-container>
+  <el-container id="main">
+    <tabs :items="children"></tabs>
+    <router-view></router-view>
+  </el-container>
 </template>
 
 <script>

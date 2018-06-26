@@ -1,9 +1,6 @@
 <template>
   <el-tabs type="card" class="aside-list" tab-position="left" v-model="activeName" @tab-click="showClickType">
     <el-tab-pane v-for="item in types" :key="item.tid" :label="item.dtype" :name="item.dtype"></el-tab-pane>
-    <!-- <div class="aside-item" v-for="item in types" :key="item.tid">
-      <el-button class="aside-button" type="primary" @click="showDishesByType(item.dtype)">{{ item.dtype }}</el-button>
-    </div> -->
   </el-tabs>
 </template>
 
@@ -26,6 +23,9 @@ export default {
     showClickType (tab) {
       this.showDishesByType(tab.name)
     }
+  },
+  created () {
+    this.showDishesByType('全部')
   }
 }
 </script>

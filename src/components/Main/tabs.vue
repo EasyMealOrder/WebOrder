@@ -7,9 +7,13 @@
 <script>
 export default {
   props: ['items'],
-  data () {
-    return {
-      activeName: this.items[0].link
+  computed: {
+    activeName: {
+      get: function () {
+        return this.$route.fullPath
+      },
+      set: function () {
+      }
     }
   },
   methods: {
