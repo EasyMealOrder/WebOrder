@@ -131,6 +131,8 @@ export default{
   top: 30%;
   width: 70%;
   height: 30%;
+  min-height: 200px;
+  overflow: scroll;
 }
 .el-message-box.messageBox {
   width: 70%;
