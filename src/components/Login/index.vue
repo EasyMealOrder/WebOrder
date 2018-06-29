@@ -45,9 +45,11 @@ export default {
       var params = new URLSearchParams()
       params.append('username', this.loginForm.username)
       params.append('password', this.loginForm.password)
+      // 向服务器提交登录信息
       axios.post(loginUrL, params)
         .then(response => {
           console.log(response)
+          // 登录成功，进入厨师端界面
           if (response.data.success === true) {
             this.$router.push('/cookEnd')
             this.$store.commit('generateUserID')

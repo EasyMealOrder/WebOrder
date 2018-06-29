@@ -39,6 +39,7 @@ const actions = {
 
 const mutations = {
   generateAccessToken (state) {
+    // 生成用户标识
     let generate = require('nanoid/generate')
     state.access_token = generate(service.genstr, 10)
     console.log(state.access_token)

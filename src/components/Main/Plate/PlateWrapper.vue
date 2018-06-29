@@ -36,6 +36,7 @@ export default{
     ...mapMutations([
       'setCurrentOrder'
     ]),
+    // 提交订单
     postOrder (value) {
       console.log('post order call')
       console.log(this.dishrecord)
@@ -53,7 +54,9 @@ export default{
         message: this.$message
       })
     },
+    // 订单支付
     payMeal () {
+      // 提交订单前弹出窗口，供用户输入备注
       this.$prompt('请输入备注', '提交订单', {
         confirmButtonText: '支付订单',
         cancelButtonText: '取消订单',

@@ -31,6 +31,7 @@ export default {
     console.log('The table id is: ' + this.$route.params.id)
     this.setTableID(Number(this.$route.params.id))
     console.log('after set table id, id is  ' + this.tableID)
+    // 生成用户标识
     if (this.accessToken === '') {
       this.generateOpenId()
       this.generateAccessToken()
