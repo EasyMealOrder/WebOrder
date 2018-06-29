@@ -35,8 +35,7 @@ export default {
     }
   },
   created () {
-    // 假装是用户订单
-    // todo：之后改回是客户用的接口
+    // 从服务器返回所有历史订单
     service.getAllMyOrder(
       (res) => {
         this.allMyOrder = res['data']
@@ -45,6 +44,7 @@ export default {
     )
   },
   methods: {
+    // 返回“我”界面
     goBack () {
       this.$router.replace('/main/myself')
     }

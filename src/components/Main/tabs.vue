@@ -17,6 +17,7 @@ export default {
     }
   },
   methods: {
+    // 根据所点击的tab渲染不同组件
     onTabClick (tab) {
       this.$router.push(tab.name)
     }

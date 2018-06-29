@@ -18,6 +18,7 @@ const state = {
 // getters
 const getters = {
   checkoutStatus: state => state.checkoutStatus,
+  // 返回当前订单
   currentOrder: state => state.currentOrder,
   // 检查购物车是否为空
   checkIfEmpty: state => state.added.length,
@@ -48,6 +49,7 @@ const getters = {
     })
   },
 
+  // 计算当前餐盘订单总价
   cartTotalPrice: (state, getters) => {
     return getters.cartDishes.reduce((total, dish) => {
       return total + dish.price * dish.quantity
@@ -62,8 +64,9 @@ const actions = {
     console.log('route', route)
     const savedCartItems = [...state.added]
     commit('setCheckoutStatus', null)
-    // empty cart
+    // 重置餐盘
     commit('setCartItems', { items: [] })
+    // 向服务器提交订单
     service.buyDishes(
       dishes,
       () => {
@@ -83,6 +86,8 @@ const actions = {
     )
   },
 
+  // 向餐盘中添加菜品
+  // 如果菜品已存在，增加其数量
   addDishToCart ({ state, commit }, dish) {
     commit('setCheckoutStatus', null)
     const cartItem = state.added.find(item => item.id === dish.id)
@@ -93,6 +98,8 @@ const actions = {
     }
   },
 
+  // 从餐盘中减少菜品数量
+  // 当某个菜品数量减为0时移除该菜品
   minusDishFromCart ({ state, commit }, dish) {
     commit('setCheckoutStatus', null)
     const cartItem = state.added.find(item => item.id === dish.id)

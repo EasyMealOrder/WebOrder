@@ -18,6 +18,7 @@ export default {
   apihost,
 
   // 消费者用
+  // 获取当前商家所有菜品
   getDishesFromService (cb) {
     console.log('getDishesFromService called')
     axios.get('/api/dish/')
@@ -28,6 +29,7 @@ export default {
   },
 
   // 消费者用
+  // 获取所有菜品类型
   getDishTypesFromService (cb) {
     console.log('getDishTypesFromService called')
 
@@ -38,6 +40,7 @@ export default {
       })
   },
 
+  // 生成accesstoken,openid作为用户标识，发送至服务器
   postAccessTokenToServer (cb, {accesstoken, openid}) {
     console.log('postAcessTokenToServer')
 
@@ -52,6 +55,7 @@ export default {
   },
 
   // 消费者用
+  // 提交当前餐盘订单
   buyDishes (data, cb, errorCb) {
     let params = JSON.stringify(data)
     axios.post('/api/order/create/', params, {
@@ -67,7 +71,7 @@ export default {
   },
 
   // 消费者用
-  // 暂定用session作为标识
+  // 根据cookie中的用户标识，从服务器取回历史订单
   getAllMyOrder (cb) {
     console.log('getAllToDoOrder called')
 

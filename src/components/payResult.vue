@@ -15,6 +15,7 @@ export default {
     ...mapActions([
       'checkout'
     ]),
+    // 返回主界面
     goback () {
       this.$router.replace('/main/home')
     }

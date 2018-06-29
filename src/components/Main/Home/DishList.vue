@@ -29,9 +29,11 @@ export default {
   computed: mapGetters({
     dishes: 'shownDishes'
   }),
+  // 点击某个菜品时，将其加入餐盘
   methods: mapActions([
     'addDishToCart'
   ]),
+  // 初始创建页面时，得到所有菜品
   created () {
     if (this.$store.getters.allDishes === undefined || this.$store.getters.allDishes.length === 0) {
       this.$store.dispatch('getAllDishes')
