@@ -1,31 +1,27 @@
 <template>
   <el-container id='orderPage'>
     <div class="orderPageHeader">
-      <el-button id="goBackButton" icon="el-icon-arrow-left" @click="goBack">历史订单</el-button>
+      <el-button class="goBackButton">
+        <i class="el-icon-arrow-left leftArrow-style" @click="goBack"></i>
+        <span class="goBack-font">历史订单</span>
+      </el-button>
     </div>
-    <el-main class="masonry">
-      <el-card class="allOrderListInConsumerEnd item box-card" v-for="order in allMyOrder" :key="order.orderId" shadow="hover">
-        <div slot="header" class="clearfix">
+    <div class="masonry">
+      <el-card class="box-card" v-for="order in allMyOrder" :key="order.orderId" :shadow="hover" :body-style="{ padding: '0px', height: '75%' }" >
+        <div slot="header" class="card-head">
           <span class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</span>
           <span class="orderMetaData"> 订单号 {{order.id}}</span>
         </div>
-
-        <div class="wrapperOfDishesInToDoOrder">
-          <div id="dishWrapper">
-           <div id="dishNameItem">{{order.price}}元</div>
-           <!-- <div id="dishAmountItem">{{dish.num}}份</div> -->
-           <div id="dishCompletedItem">
-            <div id="ADishInAOrderIsFinishedText" v-show="order.finished">已完成</div>
-            <div id="ADishInAOrderIsNotFinishedText" v-show="!order.finished">未完成</div>
-           </div>
+        <img src="/static/images/dish.jpeg" class="order-img"/>
+        <div class="orderWrapper">
+          <p class="orderPrice">价格：{{order.price}}元</p>
+          <div class="dishCompletedItem">
+            <p class="ADishInAOrderIsFinishedText" v-show="order.finished">订单状态：已完成</p>
+            <p class="ADishInAOrderIsNotFinishedText" v-show="!order.finished">订单状态：未完成</p>
           </div>
         </div>
-
-        <hr/>
-
-        <div class="note">备注: {{order.note}} </div>
       </el-card>
-    </el-main>
+    </div>
   </el-container>
 </template>
 <script>
@@ -58,119 +54,85 @@ export default {
 
 <style>
 #orderPage {
-  position: fixed;
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: #fff;
+  background-color: #efefef;
 }
 
-.orderPageHeader {
+#orderPage .orderPageHeader {
   position: fixed;
   height: 8%;
+  background-color: #ffffff;
   width: 100%;
   top: 0;
 }
 
-#goBackButton {
-  position: absolute;
+#orderPage .orderPageHeader .goBackButton {
+  height: 100%;
   width: 10%;
   border-style: none;
-  padding-top: 15px;
-  font-size: 15px;
 }
 
-.allOrderListInConsumerEnd {
-  border-width: 3px;
-  border-style: solid;
-  border-color: rgb(225, 226, 226);
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  background-color: #ffffff;
-  margin-top: 10px;
-  margin-bottom: 5px;
+#orderPage .orderPageHeader .goBackButton .leftArrow-style {
+  height: 100%;
+  font-size: 200%;
+  color: #409EFF;
 }
 
-.masonry {
-  position: absolute;
+#orderPage .orderPageHeader .goBackButton .goBack-font {
+  color: #409EFF;
+  line-height: 100%;
+  font-size: 120%;
+  position: relative;
+  bottom: 3px;
+}
+
+#orderPage .masonry {
+  position: fixed;
   height: 92% ! important;
   top: 8% ! important;
-  display: flex;
-  flex-flow: row wrap;
-  margin-right: 0;
-  margin-left: 0; /* Adjustment for the gutter */
   width: 100%;
+  overflow: scroll;
 }
 
-.item {
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: auto;
-  height: auto;
-  width: 80%;
-  line-height: 14px;
-  margin-top: 2%;
+#orderPage .masonry .box-card {
+  height: 40%;
+  width: 85%;
   margin-right: auto;
   margin-left: auto; /* Some gutter */
+  border-color: rgb(225, 226, 226);
+  background-color: #ffffff;
+  margin-top: 4%;
+  margin-bottom: 10%;
 }
-
-.orderMetaData {
-  font-size: 14px;
-  padding: 2px;
-  border-radius: 3px;
+#orderPage .masonry .box-card .card-head {
+  height: 10%;
+  line-height: 100%;
+  font-weight: bold;
 }
-
-#dishWrapper {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-#dishNameItem,#dishCompletedItem, #dishCompletedItem {
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: auto;
-  height: auto;
-}
-
-#dishNameItem {
-  flex-shrink: 4;
-  flex-grow: 4;
-}
-
-#dishAmountItem {
-  flex-shrink: 1;
-  flex-grow: 1;
-}
-
-#dishCompletedItem {
-  flex-shrink: 1;
-  flex-grow: 1;
-}
-
-#allCompletedButton {
+#orderPage .masonry .box-card .order-img {
+  height: 60%;
   width: 100%;
-  margin-bottom: 5px;
-  background-color: #b56969;
+}
+#orderPage .masonry .box-card .orderWrapper {
+  height: 40%;
 }
 
-#finishADishInAOrderButton {
-  background-color: #b56969;
+#orderPage .masonry .box-card .orderWrapper .orderPrice {
+  padding: 3% 0 0 3%;
+  line-height: 80%;
+  margin: 0;
 }
 
-#ADishInAOrderIsFinishedText {
+#orderPage .masonry .box-card .orderWrapper .dishCompletedItem {
+  padding: 0 0 0 3%;
+}
+#orderPage .masonry .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsFinishedText {
   color: #3cb035;
 }
 
-#ADishInAOrderIsNotFinishedText{
+#orderPage .masonry .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsNotFinishedText{
   color: #b56969;
-}
-
-.note {
-  height: 10vw;
-  line-height: 10vw;
-  font-size: 14px;
-  padding: 3px;
-  border-radius: 4px;
 }
 </style>
