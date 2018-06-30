@@ -8,7 +8,7 @@
           <p class="desc">{{ dish.description }}</p>
           <div class="dish-bottom">
             <p class="price">¥ {{dish.price}}</p>
-            <el-button class="dish-sub" circle>
+            <el-button class="dish-sub" circle @click="minusDishFromCart(dish)">
               <i class="el-icon-minus button-pos"></i>
             </el-button>
             <!-- <div class="dish-count">{{ dish.num }}</div> -->
@@ -33,11 +33,13 @@ export default {
   methods: {
     ...mapActions([
       'addDishToCart',
-      'setDetailDish'
+      'setDetailDish',
+      'minusDishFromCart'
     ]),
     viewDetailedDish (d, event) {
       console.log(event.target.tagName)
       if (event.target.tagName === 'I') {
+        console.log(this.dishes)
         console.log('prevent')
       } else {
         this.setDetailDish(d)
