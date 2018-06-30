@@ -9,8 +9,8 @@
     <div class="orderPageMain">
       <el-card class="box-card" v-for="(order,i) in allMyOrder" :key="order.id" :body-style="{ padding: '0px', height: '75%' }" >
         <div slot="header" class="card-head">
-          <span class="orderMetaData">{{order.table}}号桌</span>
-          <span class="orderMetaData"> 订单号 {{order.id}}</span>
+          <span>{{order.table}}号桌</span>
+          <span> 订单号 {{order.id}}</span>
         </div>
         <div class="order-info">
           <div class="order-img">
