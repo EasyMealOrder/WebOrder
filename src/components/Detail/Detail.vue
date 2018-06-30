@@ -1,5 +1,5 @@
 <template>
-  <el-container id="dishDetails">
+  <el-container class="dishDetails">
     <el-header class="dishDetailHeader">
       <el-button class="goBackButton" @click="goBack">
         <i class="el-icon-arrow-left leftArrow-style"></i>
@@ -8,7 +8,7 @@
     </el-header>
     <el-main class="dishDetailMain">
       <div class="dishDetailMiddle">
-        <img id="dishPicture" :src="dish.dish_img" />
+        <img class="dishPicture" :src="dish.dish_img" />
         <span class="dishName">{{ dish.name }}</span>
         <br>
         <span class="dishPrice">¥ {{ dish.price }}</span>
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style>
-#dishDetails {
+.dishDetails {
   font-family: Helvetica, sans-serif;
   position: fixed;
   height: 100%;
@@ -61,7 +61,7 @@ export default {
   background-color: #efefef;
 }
 
-.dishDetailHeader {
+.dishDetails .dishDetailHeader {
   position: absolute;
   height: 8% ! important;
   width: 100%;
@@ -69,19 +69,20 @@ export default {
   background-color: white;
 }
 
-.goBackButton {
+.dishDetails .dishDetailHeader .goBackButton {
   border-style: none;
 }
 
-.dishDetailMain {
+.dishDetails .dishDetailMain {
   position: absolute;
   height: 92% ! important;
   width: 100%;
   top: 8%;
   padding: 0 20px 0 20px;
+  line-height: inherit;
 }
 
-.dishDetailMiddle {
+.dishDetails .dishDetailMain .dishDetailMiddle {
   position: absolute;
   height: 60%;
   width: 100%;
@@ -89,33 +90,35 @@ export default {
   background-color: white;
 }
 
-#dishPicture {
+.dishDetails .dishDetailMain .dishDetailMiddle .dishPicture {
   position: absolute;
   width: 85%;
   height: auto;
 }
 
-.dishName {
+.dishDetails .dishDetailMain .dishDetailMiddle .dishName {
   position: absolute;
   font-weight: bold;
   font-size: 18px;
   bottom: 30px;
+  line-height: 18px;
 }
 
-.dishPrice {
+.dishDetails .dishDetailMain .dishDetailMiddle .dishPrice {
   position: absolute;
   color: red;
   font-size: 12px;
   bottom: 10px;
+  line-height: 12px;
 }
 
-.cartButton {
+.dishDetails .dishDetailMain .dishDetailMiddle .cartButton {
   position: absolute;
   bottom: 10px;
   right: 50px;
 }
 
-.dishDetailBottom {
+.dishDetails .dishDetailMain .dishDetailBottom {
   position: absolute;
   height: 20%;
   width: 100%;
@@ -124,13 +127,15 @@ export default {
   background-color: white;
 }
 
-.descriptionTitle {
+.dishDetails .dishDetailMain .dishDetailBottom .descriptionTitle {
   font-size: 17px;
+  line-height: 17px;
 }
 
-.dishDescription {
+.dishDetails .dishDetailMain .dishDetailBottom .dishDescription {
   font-size: 14px;
   color: rgb(108, 109, 109);
   padding-left: 5px;
+  line-height: 14px;
 }
 </style>
