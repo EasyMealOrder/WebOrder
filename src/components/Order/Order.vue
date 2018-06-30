@@ -6,7 +6,7 @@
         <span class="goBack-font">历史订单</span>
       </el-button>
     </div>
-    <div class="masonry">
+    <div class="orderPageMain">
       <el-card class="box-card" v-for="(order,i) in allMyOrder" :key="order.id" :body-style="{ padding: '0px', height: '75%' }" >
         <div slot="header" class="card-head">
           <span class="orderMetaData">{{order.table}}号桌</span>
@@ -138,7 +138,7 @@ export default {
   bottom: 3px;
 }
 
-#orderPage .masonry {
+#orderPage .orderPageMain {
   position: fixed;
   height: 92% ! important;
   top: 8% ! important;
@@ -146,7 +146,7 @@ export default {
   overflow: scroll;
 }
 
-#orderPage .masonry .box-card {
+#orderPage .orderPageMain .box-card {
   height: 45%;
   width: 85%;
   margin-right: auto;
@@ -156,17 +156,17 @@ export default {
   margin-top: 4%;
   margin-bottom: 10%;
 }
-#orderPage .masonry .box-card .card-head {
+#orderPage .orderPageMain .box-card .card-head {
   height: 10%;
   line-height: 100%;
   font-weight: bold;
 }
-#orderPage .masonry .box-card .order-info {
+#orderPage .orderPageMain .box-card .order-info {
   height: 40%;
   width: 100%;
   overflow: hidden;
 }
-#orderPage .masonry .box-card .order-info .order-img {
+#orderPage .orderPageMain .box-card .order-info .order-img {
   float: left;
   margin: 2% 5% 0 5%;
   padding-bottom: 25%;
@@ -174,12 +174,12 @@ export default {
   height: 0;
   overflow: hidden;
 }
-#orderPage .masonry .box-card .order-info .order-img img {
+#orderPage .orderPageMain .box-card .order-info .order-img img {
   height: 20vw;
   width: 20vw;
   margin: auto;
 }
-#orderPage .masonry .box-card .order-info .order-dish{
+#orderPage .orderPageMain .box-card .order-info .order-dish{
   margin: 0;
   line-height: 70%;
   padding-top: 4%;
@@ -187,51 +187,52 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   font-style:oblique
 }
-#orderPage .masonry .box-card .orderWrapper {
+#orderPage .orderPageMain .box-card .orderWrapper {
   height: 30%;
   position: relative;
 }
 
-#orderPage .masonry .box-card .orderWrapper .orderPrice {
+#orderPage .orderPageMain .box-card .orderWrapper .orderPrice {
   padding: 3% 0 0 3%;
   line-height: 80%;
   margin: 0;
 }
 
-#orderPage .masonry .box-card .orderWrapper .dishCompletedItem {
+#orderPage .orderPageMain .box-card .orderWrapper .dishCompletedItem {
   padding: 6% 5% 0 0;
   position: absolute;
   right: 0;
   top: 0;
   line-height: 80%;
 }
-#orderPage .masonry .box-card .orderWrapper .orderNote {
+#orderPage .orderPageMain .box-card .orderWrapper .orderNote {
   padding: 5% 0 0 3%;
   line-height: 60%;
   font-size: 75%;
   color: #93999f;
   margin: 0;
 }
-#orderPage .masonry .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsFinishedText {
+#orderPage .orderPageMain .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsFinishedText {
   color: #3cb035;
   padding: 0;
   margin: 0;
 }
 
-#orderPage .masonry .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsNotFinishedText{
+#orderPage .orderPageMain .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsNotFinishedText{
   color: #b56969;
   padding: 0;
   margin: 0;
 }
 
-#orderPage .masonry .box-card .order-rate {
+#orderPage .orderPageMain .box-card .order-rate {
   width: 100%;
   height: 30%;
 }
-#orderPage .masonry .box-card .order-rate .rate-desc {
-  margin: 3% 5% 0 5%;
+#orderPage .orderPageMain .box-card .order-rate .rate-desc {
+  margin: 1% 5% 0 5%;
+  line-height: 80%;
 }
-#orderPage .masonry .box-card .order-rate .el-rate {
+#orderPage .orderPageMain .box-card .order-rate .el-rate {
   margin: 2% 5% 0 5%;
 }
 </style>
