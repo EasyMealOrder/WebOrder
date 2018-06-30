@@ -1,8 +1,8 @@
 <template>
   <el-container class="dish-list">
     <el-main>
-      <div class="dish-item" v-for="dish in dishes" :key="dish.id">
-        <div class="dish-pic" @click="viewDetailedDish(dish)"><img :src="dish.dish_img" /></div>
+      <div class="dish-item" v-for="dish in dishes" :key="dish.id" @click="viewDetailedDish(dish, $event)">
+        <div class="dish-pic"><img :src="dish.dish_img" /></div>
         <div class="dish-right">
           <p class="name">{{ dish.name }}</p>
           <p class="desc">{{ dish.description }}</p>
@@ -35,10 +35,14 @@ export default {
       'addDishToCart',
       'setDetailDish'
     ]),
-    viewDetailedDish (d) {
-      console.log('view details')
-      this.setDetailDish(d)
-      this.$router.push({name: 'Details'})
+    viewDetailedDish (d, event) {
+      console.log(event.target.tagName)
+      if (event.target.tagName === 'I') {
+        console.log('prevent')
+      } else {
+        this.setDetailDish(d)
+        this.$router.push({name: 'Details'})
+      }
     }
   },
   // 初始创建页面时，得到所有菜品
