@@ -80,5 +80,19 @@ export default {
       .catch(error => {
         console.log(error)
       })
+  },
+
+  postRateToService (data, cb) {
+    let params = JSON.stringify(data)
+
+    axios.post('/api/feedback/create/', params, {
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken'),
+        'content-type': 'application/json'
+      }})
+      .then(cb)
+      .catch(error => {
+        console.log(error)
+      })
   }
 }

@@ -29,7 +29,7 @@
         <div class="order-rate">
           <p class="rate-desc" v-if="disable[i]">评分(已评价)</p>
           <p class="rate-desc" v-if="!disable[i]">评分(未评价)</p>
-          <el-rate v-model="rate[i]" :disabled="disable[i]" :change="rateSubmit(i)"></el-rate>
+          <el-rate v-model="star[i]" :disabled="disable[i]" @change="rateSubmit(i, order.id)"></el-rate>
         </div>
       </el-card>
     </div>
@@ -42,8 +42,8 @@ export default {
   name: 'order',
   data () {
     return {
-      rate: [4, 1],
-      disable: [true, false]
+      star: [4, 1],
+      disable: [false, false]
     }
   },
   computed: {
@@ -61,14 +61,21 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getHistoryOrderFromService'
+      'getHistoryOrderFromService',
+      'submitHistoryRate'
     ]),
     goBack () {
       this.$router.replace('/main/myself')
     },
-    rateSubmit (i) {
-      console.log(i)
+    rateSubmit (i, id) {
+      console.log('i is ' + i)
+      console.log('id is ' + id)
       this.disable[i] = true
+      this.submitHistoryRate({
+        orderID: id,
+        star: this.star[i],
+        comments: ''
+      })
     }
   },
   created () {
