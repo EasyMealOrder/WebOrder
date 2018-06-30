@@ -85,7 +85,7 @@ export default {
   postRateToService (data, cb) {
     let params = JSON.stringify(data)
 
-    axios.post('/api/feedback/create/', params, {
+    axios.post('/api/feedback/set/', params, {
       headers: {
         'X-CSRFToken': getCookie('csrftoken'),
         'content-type': 'application/json'

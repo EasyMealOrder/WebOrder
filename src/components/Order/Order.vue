@@ -1,6 +1,6 @@
 <template>
   <el-container id='orderPage'>
-    <div class="orderPageHeader">
+    <div class="orderPageHeader" @click="debug">
       <el-button class="goBackButton">
         <i class="el-icon-arrow-left leftArrow-style" @click="goBack"></i>
         <span class="goBack-font">历史订单</span>
@@ -42,8 +42,8 @@ export default {
   name: 'order',
   data () {
     return {
-      star: [4, 1],
-      disable: [false, false]
+      star: [],
+      disable: []
     }
   },
   computed: {
@@ -57,6 +57,14 @@ export default {
           dish: item.dish
         }
       })
+    },
+    allStar () {
+      return this.historyOrder.map(item => {
+        return item.order.star
+      })
+    },
+    allDisable () {
+      return this.historyOrder.map(item => item.order.disable)
     }
   },
   methods: {
@@ -71,16 +79,25 @@ export default {
       console.log('i is ' + i)
       console.log('id is ' + id)
       this.disable[i] = true
+      console.log(this.disable)
       this.submitHistoryRate({
         orderID: id,
         star: this.star[i],
-        comments: ''
+        comment: ''
       })
+    },
+    debug () {
+      console.log('debug')
+      console.log(this.allStar)
     }
   },
   created () {
     // 从服务器返回所有历史订单
     this.getHistoryOrderFromService()
+  },
+  mounted () {
+    this.star = this.allStar
+    this.disable = this.allDisable
   }
 }
 </script>
@@ -150,7 +167,6 @@ export default {
   overflow: hidden;
 }
 #orderPage .masonry .box-card .order-info .order-img {
-  position: relative;
   float: left;
   margin: 2% 5% 0 5%;
   padding-bottom: 25%;

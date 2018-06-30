@@ -79,8 +79,8 @@ const mutations = {
   },
   setOrderStar (state, {star, orderID}) {
     const index = state.historyOrder.findIndex(item => item.order.id === orderID)
-    state[index].order.star = star
-    state[index].order.disable = true
+    state.historyOrder[index].order.star = star
+    state.historyOrder[index].order.disable = true
   }
 }
 
