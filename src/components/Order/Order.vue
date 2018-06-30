@@ -7,7 +7,7 @@
       </el-button>
     </div>
     <div class="masonry">
-      <el-card class="box-card" v-for="order in allMyOrder" :key="order.orderId" :shadow="hover" :body-style="{ padding: '0px', height: '75%' }" >
+      <el-card class="box-card" v-for="order in allMyOrder" :key="order.orderId" :body-style="{ padding: '0px', height: '75%' }" >
         <div slot="header" class="card-head">
           <span class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</span>
           <span class="orderMetaData"> 订单号 {{order.id}}</span>

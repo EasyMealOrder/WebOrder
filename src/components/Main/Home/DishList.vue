@@ -2,7 +2,7 @@
   <el-container class="dish-list">
     <el-main>
       <div class="dish-item" v-for="dish in dishes" :key="dish.id">
-        <img :src="dish.dish_img" />
+        <div class="dish-pic" @click="viewDetailedDish(dish)"><img :src="dish.dish_img" /></div>
         <div class="dish-right">
           <p class="name">{{ dish.name }}</p>
           <p class="desc">{{ dish.description }}</p>
@@ -30,9 +30,17 @@ export default {
     dishes: 'shownDishes'
   }),
   // 点击某个菜品时，将其加入餐盘
-  methods: mapActions([
-    'addDishToCart'
-  ]),
+  methods: {
+    ...mapActions([
+      'addDishToCart',
+      'setDetailDish'
+    ]),
+    viewDetailedDish (d) {
+      console.log('view details')
+      this.setDetailDish(d)
+      this.$router.push({name: 'Details'})
+    }
+  },
   // 初始创建页面时，得到所有菜品
   created () {
     if (this.$store.getters.allDishes === undefined || this.$store.getters.allDishes.length === 0) {
@@ -137,5 +145,12 @@ export default {
   position: absolute;
   left: 67%;
   background-color: #909399;
+}
+
+.dish-pic {
+  position: relative;
+  height: 100%;
+  width: 25vw;
+  float: left;
 }
 </style>

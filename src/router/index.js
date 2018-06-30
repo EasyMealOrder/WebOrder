@@ -9,6 +9,7 @@ import Myself from '../components/Main/Myself/Myself.vue'
 import PlateWrapper from '../components/Main/Plate/PlateWrapper.vue'
 import PayResult from '../components/payResult'
 import CookEnd from '../components/CookEnd/CookEnd'
+import Details from '../components/Detail/Detail'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/cookEnd',
       name: 'cookEndPage',
       component: CookEnd
+    },
+    {
+      path: '/detail',
+      name: 'Details',
+      component: Details
     }
   ]
 })

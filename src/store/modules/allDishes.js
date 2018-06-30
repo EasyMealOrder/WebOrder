@@ -5,7 +5,8 @@ const state = {
   all: [],
   shownDishes: [],
   // 侧边栏菜品类型
-  typeList: []
+  typeList: [],
+  dishDetail: []
 }
 
 // getters
@@ -13,7 +14,8 @@ const getters = {
   allDishes: state => state.all,
   carouselDishes: state => state.all.slice(0, 4),
   allTypes: state => state.typeList,
-  shownDishes: state => state.shownDishes
+  shownDishes: state => state.shownDishes,
+  dishDetail: state => state.dishDetail
 }
 
 const actions = {
@@ -39,6 +41,9 @@ const actions = {
   // 按类显示菜单
   showDishesByType ({commit}, type) {
     commit('setShownDishes', type)
+  },
+  setDetailDish ({commit}, dish) {
+    commit('setDetailedDish', dish)
   }
 }
 
@@ -70,6 +75,9 @@ const mutations = {
   // 按种类设置数组
   setShownDishes (state, t) {
     state.shownDishes = state.all.filter(item => item.type.includes(t))
+  },
+  setDetailedDish (state, dish) {
+    state.dishDetail = dish
   }
 }
 
