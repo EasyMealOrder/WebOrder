@@ -11,7 +11,8 @@ const state = {
   headimgurl: '/static/images/timg.jpeg',
   privilege: [],
   unionid: '',
-  tableID: null
+  tableID: null,
+  historyOrder: []
 }
 
 const getters = {
@@ -20,7 +21,8 @@ const getters = {
   username: state => state.nickname,
   sex: state => state.sex,
   headimgurl: state => state.headimgurl,
-  tableID: state => state.tableID
+  tableID: state => state.tableID,
+  historyOrder: state => state.historyOrder
 }
 
 const actions = {
@@ -33,6 +35,11 @@ const actions = {
     {
       accesstoken: state.access_token,
       openid: state.openid
+    })
+  },
+  getHistoryOrderFromService ({commit}) {
+    service.getAllMyOrder(res => {
+      commit('setHistoryOrder', res['data'])
     })
   }
 }
@@ -59,6 +66,11 @@ const mutations = {
     state.tableID = num
     console.log('set table id in state')
     console.log(state.tableID)
+  },
+  setHistoryOrder (state, data) {
+    state.historyOrder = data
+    console.log('set history order')
+    console.log(state.historyOrder)
   }
 }
 

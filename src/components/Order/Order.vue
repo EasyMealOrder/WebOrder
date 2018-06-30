@@ -7,47 +7,73 @@
       </el-button>
     </div>
     <div class="masonry">
-      <el-card class="box-card" v-for="order in allMyOrder" :key="order.orderId" :shadow="hover" :body-style="{ padding: '0px', height: '75%' }" >
+      <el-card class="box-card" v-for="(order,i) in allMyOrder" :key="order.id" :body-style="{ padding: '0px', height: '75%' }" >
         <div slot="header" class="card-head">
-          <span class="orderMetaData">{{order.table}}号桌    {{order.orderTime}}</span>
+          <span class="orderMetaData">{{order.table}}号桌</span>
           <span class="orderMetaData"> 订单号 {{order.id}}</span>
         </div>
-        <img src="/static/images/dish.jpeg" class="order-img"/>
+        <div class="order-info">
+          <div class="order-img">
+            <img :src="order.dish[0].pic"/>
+          </div>
+          <p v-for="dish in order.dish" :key="dish.name" class="order-dish">{{dish.name}} ×{{dish.number}}</p>
+        </div>
         <div class="orderWrapper">
           <p class="orderPrice">价格：{{order.price}}元</p>
           <div class="dishCompletedItem">
             <p class="ADishInAOrderIsFinishedText" v-show="order.finished">订单状态：已完成</p>
             <p class="ADishInAOrderIsNotFinishedText" v-show="!order.finished">订单状态：未完成</p>
           </div>
+          <p class="orderNote">备注：{{order.note}}</p>
+        </div>
+        <div class="order-rate">
+          <p class="rate-desc" v-if="disable[i]">评分(已评价)</p>
+          <p class="rate-desc" v-if="!disable[i]">评分(未评价)</p>
+          <el-rate v-model="rate[i]" :disabled="disable[i]" :change="rateSubmit(i)"></el-rate>
         </div>
       </el-card>
     </div>
   </el-container>
 </template>
 <script>
-import service from '../../api/unitedInterface'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
-  name: 'cookEndPage',
-  data: function () {
+  name: 'order',
+  data () {
     return {
-      allMyOrder: []
+      rate: [4, 1],
+      disable: [true, false]
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'historyOrder'
+    ]),
+    allMyOrder () {
+      return this.historyOrder.map(item => {
+        return {
+          ...item.order,
+          dish: item.dish
+        }
+      })
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getHistoryOrderFromService'
+    ]),
+    goBack () {
+      this.$router.replace('/main/myself')
+    },
+    rateSubmit (i) {
+      console.log(i)
+      this.disable[i] = true
     }
   },
   created () {
     // 从服务器返回所有历史订单
-    service.getAllMyOrder(
-      (res) => {
-        this.allMyOrder = res['data']
-        console.log(res['data'])
-      }
-    )
-  },
-  methods: {
-    // 返回“我”界面
-    goBack () {
-      this.$router.replace('/main/myself')
-    }
+    this.getHistoryOrderFromService()
   }
 }
 </script>
@@ -97,7 +123,7 @@ export default {
 }
 
 #orderPage .masonry .box-card {
-  height: 40%;
+  height: 45%;
   width: 85%;
   margin-right: auto;
   margin-left: auto; /* Some gutter */
@@ -111,12 +137,36 @@ export default {
   line-height: 100%;
   font-weight: bold;
 }
-#orderPage .masonry .box-card .order-img {
-  height: 60%;
+#orderPage .masonry .box-card .order-info {
+  height: 40%;
   width: 100%;
+  overflow: hidden;
+}
+#orderPage .masonry .box-card .order-info .order-img {
+  position: relative;
+  float: left;
+  margin: 2% 5% 0 5%;
+  padding-bottom: 25%;
+  width: 25%;
+  height: 0;
+  overflow: hidden;
+}
+#orderPage .masonry .box-card .order-info .order-img img {
+  height: 20vw;
+  width: 20vw;
+  margin: auto;
+}
+#orderPage .masonry .box-card .order-info .order-dish{
+  margin: 0;
+  line-height: 70%;
+  padding-top: 4%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style:oblique
 }
 #orderPage .masonry .box-card .orderWrapper {
-  height: 40%;
+  height: 30%;
+  position: relative;
 }
 
 #orderPage .masonry .box-card .orderWrapper .orderPrice {
@@ -126,13 +176,39 @@ export default {
 }
 
 #orderPage .masonry .box-card .orderWrapper .dishCompletedItem {
-  padding: 0 0 0 3%;
+  padding: 6% 5% 0 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 80%;
+}
+#orderPage .masonry .box-card .orderWrapper .orderNote {
+  padding: 5% 0 0 3%;
+  line-height: 60%;
+  font-size: 75%;
+  color: #93999f;
+  margin: 0;
 }
 #orderPage .masonry .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsFinishedText {
   color: #3cb035;
+  padding: 0;
+  margin: 0;
 }
 
 #orderPage .masonry .box-card .orderWrapper .dishCompletedItem .ADishInAOrderIsNotFinishedText{
   color: #b56969;
+  padding: 0;
+  margin: 0;
+}
+
+#orderPage .masonry .box-card .order-rate {
+  width: 100%;
+  height: 30%;
+}
+#orderPage .masonry .box-card .order-rate .rate-desc {
+  margin: 3% 5% 0 5%;
+}
+#orderPage .masonry .box-card .order-rate .el-rate {
+  margin: 2% 5% 0 5%;
 }
 </style>

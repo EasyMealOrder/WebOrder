@@ -75,7 +75,7 @@ export default {
   getAllMyOrder (cb) {
     console.log('getAllToDoOrder called')
 
-    axios.post('/api/order/getUserOder/', null, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
+    axios.post('/api/order/getUserOrder/', null, {headers: {'X-CSRFToken': getCookie('csrftoken')}})
       .then(cb)
       .catch(error => {
         console.log(error)
