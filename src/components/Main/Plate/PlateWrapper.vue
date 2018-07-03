@@ -44,7 +44,7 @@ export default{
         order: {
           table: this.tableID,
           price: this.totalPrice,
-          note: value
+          note: value || ''
         },
         dishrecord: this.dishrecord
       })
