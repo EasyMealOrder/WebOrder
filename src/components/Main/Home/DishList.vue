@@ -8,11 +8,12 @@
           <p class="desc">{{ dish.description }}</p>
           <div class="dish-bottom">
             <p class="price">¥ {{dish.price}}</p>
+            <!--
             <el-button class="dish-sub" circle @click="minusDishFromCart(dish)">
               <i class="el-icon-minus button-pos"></i>
             </el-button>
-            <!-- <div class="dish-count">{{ dish.num }}</div> -->
-            <el-button class="dish-add" type="primary" circle @click="addDishToCart(dish)">
+            -->
+            <el-button class="dish-add" type="primary" circle @click="ClickToAddDishToCart(dish)">
               <i class="el-icon-plus button-pos"></i>
             </el-button>
           </div>
@@ -29,7 +30,7 @@ export default {
   computed: mapGetters({
     dishes: 'shownDishes'
   }),
-  // 点击某个菜品时，将其加入餐盘
+  // 点击某个菜品时，将其加入餐盘： addDishToCart
   methods: {
     ...mapActions([
       'addDishToCart',
@@ -45,8 +46,20 @@ export default {
         this.setDetailDish(d)
         this.$router.push({name: 'Details'})
       }
+    },
+    // 弹出提示成功添加到购物车
+    notifyToAddToCart () {
+      console.log('notification called')
+      this.$notify({
+        message: '已添加到购物车'
+      })
+    },
+    ClickToAddDishToCart (dish) {
+      this.$store.dispatch('addDishToCart', dish)
+      this.notifyToAddToCart()
     }
   },
+
   // 初始创建页面时，得到所有菜品
   created () {
     if (this.$store.getters.allDishes === undefined || this.$store.getters.allDishes.length === 0) {
