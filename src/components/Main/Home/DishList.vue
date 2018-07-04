@@ -51,7 +51,7 @@ export default {
     notifyToAddToCart () {
       console.log('notification called')
       this.$notify({
-        message: '已添加到购物车'
+        message: '已添加到餐盘'
       })
     },
     ClickToAddDishToCart (dish) {
